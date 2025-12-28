@@ -3,74 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Novillito Express - Carnicería</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Vínculo a la hoja de estilo CSS -->
+    <title>Catalogo Parrilla El Sabor - Broaster Crujiente</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: linear-gradient(to bottom, #ff6b35, #f7931e); color: #333; text-align: center; }
+        h1 { color: white; font-size: 2.5em; margin-bottom: 10px; }
+        .qr { max-width: 150px; margin: 20px auto; }
+        .menu { background: white; margin: 20px auto; padding: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); max-width: 400px; }
+        .item { display: flex; justify-content: space-between; margin: 10px 0; font-size: 1.2em; }
+        .whatsapp-btn { background: #25D366; color: white; padding: 15px 30px; font-size: 1.5em; border: none; border-radius: 50px; text-decoration: none; display: inline-block; margin: 20px; }
+        .pagos { background: #f8f9fa; padding: 15px; border-radius: 10px; margin-top: 20px; }
+        footer { margin-top: 30px; color: white; font-size: 0.9em; }
+    </style>
 </head>
 <body>
-
-<!-- Header -->
-<header>
-    <div class="logo">
-        <img src="logo.png" alt="Novillito Express Logo"> <!-- Asegúrate de tener un logo en formato .png o .jpg -->
+    <h1>🔥 Parrilla El Sabor & Broaster Crujiente 🔥</h1>
+    <p>¡Pide ya! Escanea QR o chatea directo. Entregas en Maiquetía y zona.</p>
+    
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://tuusuario.github.io/catalogo-parrilla/" alt="QR Catálogo" class="qr">
+    
+    <div class="menu">
+        <h2>🍖 Nuestros 5 Menús Top (Precios en USD)</h2>
+        <div class="item"><strong>Parrillada Mixta (1 persona)</strong> <span>$8</span></div>
+        <div class="item"><strong>Broaster Pollo 1/4 + Papas</strong> <span>$5</span></div>
+        <div class="item"><strong>Costillas BBQ + Ensalada</strong> <span>$7</span></div>
+        <div class="item"><strong>Combo Familiar (4 pers.)</strong> <span>$25</span></div>
+        <div class="item"><strong>Broaster Entero + Arroz</strong> <span>$12</span></div>
+        
+        <div class="pagos">
+            <h3>💳 Métodos de Pago:</h3>
+            <ul style="text-align: left; list-style: none; padding: 0;">
+                <li>✅ Dólares efectivo</li>
+                <li>✅ Bolívar digital (Binance/Bdv)</li>
+                <li>✅ Zelle / AirTM</li>
+            </ul>
+        </div>
     </div>
-    <nav>
-        <ul>
-            <li><a href="#productos">Productos</a></li>
-            <li><a href="#promociones">Promociones</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-        </ul>
-    </nav>
-</header>
-
-<!-- Banner Principal -->
-<section class="banner">
-    <img src="banner.jpg" alt="Carne Fresca Novillito Express">
-    <h1>La Mejor Carne Fresca Directo a Tu Hogar</h1>
-</section>
-
-<!-- Productos -->
-<section id="productos" class="productos">
-    <h2>Productos Destacados</h2>
-    <div class="producto">
-        <img src="carne_molida.jpg" alt="Carne Molida">
-        <h3>Carne Molida</h3>
-        <p>Precio: $2 por kg</p>
-        <button>Agregar al Carrito</button>
-    </div>
-    <div class="producto">
-        <img src="bistec.jpg" alt="Bistec">
-        <h3>Bistec</h3>
-        <p>Precio: $3 por kg</p>
-        <button>Agregar al Carrito</button>
-    </div>
-    <!-- Más productos aquí -->
-</section>
-
-<!-- Promociones -->
-<section id="promociones">
-    <h2>Promociones Especiales</h2>
-    <p>Descuentos en compras mayores a 10 kg.</p>
-</section>
-
-<!-- Formulario de Pedido -->
-<section id="contacto">
-    <h2>Haz tu Pedido</h2>
-    <form id="orderForm">
-        <input type="text" name="nombre" placeholder="Nombre Completo" required>
-        <input type="tel" name="telefono" placeholder="Teléfono" required>
-        <textarea name="direccion" placeholder="Dirección de Envío" required></textarea>
-        <button type="submit">Enviar Pedido</button>
-    </form>
-</section>
-
-<!-- Footer -->
-<footer>
-    <p>&copy; 2024 Novillito Express | Todos los derechos reservados</p>
-    <div class="social-media">
-        <a href="https://facebook.com/NovillitoExpress">Facebook</a>
-        <a href="https://instagram.com/NovillitoExpress">Instagram</a>
-    </div>
-</footer>
-
+    
+    <a href="https://wa.me/584121234567?text=¡Hola! Quiero pedir: " class="whatsapp-btn">📲 Pedir por WhatsApp</a>
+    
+    <footer>
+        Diseñado por [Tu Nombre] - Web gratis forever. ¡Actualizaciones ilimitadas!
+    </footer>
 </body>
 </html>
