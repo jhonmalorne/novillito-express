@@ -6,32 +6,81 @@
     <title>Catalogo Parrilla El Sabor - Broaster Crujiente</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: linear-gradient(to bottom, #ff6b35, #f7931e); color: #333; text-align: center; }
-        h1 { color: white; font-size: 2.5em; margin-bottom: 10px; }
-        .qr { max-width: 150px; margin: 20px auto; }
-        .menu { background: white; margin: 20px auto; padding: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); max-width: 400px; }
-        .item { display: flex; justify-content: space-between; margin: 10px 0; font-size: 1.2em; }
-        .whatsapp-btn { background: #25D366; color: white; padding: 15px 30px; font-size: 1.5em; border: none; border-radius: 50px; text-decoration: none; display: inline-block; margin: 20px; }
-        .pagos { background: #f8f9fa; padding: 15px; border-radius: 10px; margin-top: 20px; }
-        footer { margin-top: 30px; color: white; font-size: 0.9em; }
+        h1 { color: white; font-size: 2.5em; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .qr { max-width: 180px; margin: 20px auto; border: 8px solid white; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .menu { background: white; margin: 20px auto; padding: 20px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); max-width: 450px; }
+        .item { display: flex; align-items: center; margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 15px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); transition: transform 0.3s; }
+        .item:hover { transform: scale(1.02); }
+        .item img { width: 80px; height: 80px; object-fit: cover; border-radius: 12px; margin-right: 15px; }
+        .item-info { flex: 1; text-align: left; }
+        .precio { font-size: 1.4em; font-weight: bold; color: #ff6b35; }
+        .whatsapp-btn { background: #25D366; color: white; padding: 18px 35px; font-size: 1.6em; border: none; border-radius: 50px; text-decoration: none; display: inline-block; margin: 25px; box-shadow: 0 5px 15px rgba(37,211,102,0.4); transition: all 0.3s; }
+        .whatsapp-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(37,211,102,0.6); }
+        .pagos { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 15px; margin-top: 25px; }
+        .pagos h3 { margin-top: 0; }
+        .pagos ul { text-align: left; list-style: none; padding: 0; }
+        .pagos li { margin: 8px 0; font-size: 1.1em; }
+        footer { margin-top: 40px; color: white; font-size: 1em; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
     </style>
 </head>
 <body>
     <h1>🔥 Parrilla El Sabor & Broaster Crujiente 🔥</h1>
-    <p>¡Pide ya! Escanea QR o chatea directo. Entregas en Maiquetía y zona.</p>
+    <p>¡El mejor sabor de Maiquetía! Escanea QR o chatea directo. Entregas rápidas 🚚</p>
     
-    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://tuusuario.github.io/catalogo-parrilla/" alt="QR Catálogo" class="qr">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://tuusuario.github.io/catalogo-parrilla/" alt="QR Catálogo Completo" class="qr">
+    <p style="color: white; font-size: 1.1em; font-weight: bold;">📱 Escanea y ve TODO el menú al instante</p>
     
     <div class="menu">
-        <h2>🍖 Nuestros 5 Menús Top (Precios en USD)</h2>
-        <div class="item"><strong>Parrillada Mixta (1 persona)</strong> <span>$8</span></div>
-        <div class="item"><strong>Broaster Pollo 1/4 + Papas</strong> <span>$5</span></div>
-        <div class="item"><strong>Costillas BBQ + Ensalada</strong> <span>$7</span></div>
-        <div class="item"><strong>Combo Familiar (4 pers.)</strong> <span>$25</span></div>
-        <div class="item"><strong>Broaster Entero + Arroz</strong> <span>$12</span></div>
+        <h2 style="color: #ff6b35;">🍖 Nuestros 5 Menús Top (Precios en USD)</h2>
+        
+        <div class="item">
+            <img src="https://images.unsplash.com/photo-1621996346565-e3adc652db51?w=200&h=200&fit=crop" alt="Parrillada">
+            <div class="item-info">
+                <strong>Parrillada Mixta (1 persona)</strong><br>
+                <small>Carne, chorizo, morcilla + yuca</small>
+            </div>
+            <div class="precio">$8</div>
+        </div>
+        
+        <div class="item">
+            <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=200&h=200&fit=crop" alt="Broaster">
+            <div class="item-info">
+                <strong>Broaster Pollo 1/4 + Papas</strong><br>
+                <small>Pollo crujiente con ensalada fresca</small>
+            </div>
+            <div class="precio">$5</div>
+        </div>
+        
+        <div class="item">
+            <img src="https://images.unsplash.com/photo-1579586140626-5989f5d9ca32?w=200&h=200&fit=crop" alt="Costillas">
+            <div class="item-info">
+                <strong>Costillas BBQ + Ensalada</strong><br>
+                <small>Costillas jugosas con salsa especial</small>
+            </div>
+            <div class="precio">$7</div>
+        </div>
+        
+        <div class="item">
+            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=200&h=200&fit=crop" alt="Combo Familiar">
+            <div class="item-info">
+                <strong>Combo Familiar (4 personas)</strong><br>
+                <small>Parrillada completa + broaster + bebidas</small>
+            </div>
+            <div class="precio">$25</div>
+        </div>
+        
+        <div class="item">
+            <img src="https://images.unsplash.com/photo-1603048297194-8f7d9e7f8e7d?w=200&h=200&fit=crop" alt="Broaster Entero">
+            <div class="item-info">
+                <strong>Broaster Pollo Entero + Arroz</strong><br>
+                <small>Perfecto para compartir</small>
+            </div>
+            <div class="precio">$12</div>
+        </div>
         
         <div class="pagos">
-            <h3>💳 Métodos de Pago:</h3>
-            <ul style="text-align: left; list-style: none; padding: 0;">
+            <h3>💳 Formas de Pago Fáciles:</h3>
+            <ul>
                 <li>✅ Dólares efectivo</li>
                 <li>✅ Bolívar digital (Binance/Bdv)</li>
                 <li>✅ Zelle / AirTM</li>
@@ -39,10 +88,11 @@
         </div>
     </div>
     
-    <a href="https://wa.me/584121234567?text=¡Hola! Quiero pedir: " class="whatsapp-btn">📲 Pedir por WhatsApp</a>
+    <a href="https://wa.me/584244525765?text=¡Hola!%20Quiero%20pedir:%20" class="whatsapp-btn">📲 Pedir por WhatsApp</a>
     
     <footer>
-        Diseñado por [Tu Nombre] - Web gratis forever. ¡Actualizaciones ilimitadas!
+        Diseñado por <strong>Jhon Alvarez</strong> - Web gratis forever con actualizaciones ilimitadas<br>
+        📞 0424-4525765 | Maiquetía, Vargas 🇻🇪
     </footer>
 </body>
 </html>
