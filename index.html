@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --rojo-principal: #DC2626;
-            --rojo-metal: #B91C1C;
+            --rojo-suave: #EF4444;
+            --rojo-acento: #DC2626;
             --blanco: #FFFFFF;
-            --amarillo-metal: #D97706;
-            --negro: #000000;
-            --sombra-3d: rgba(0,0,0,0.4);
-            --gradient-rojo-metal: linear-gradient(135deg, var(--rojo-principal), var(--rojo-metal));
+            --negro: #111827;
+            --gris-oscuro: #374151;
+            --sombra-suave: rgba(0,0,0,0.1);
+            --sombra-fuerte: rgba(0,0,0,0.2);
         }
         * {
             margin: 0;
@@ -25,17 +25,17 @@
             font-family: 'Arial', sans-serif;
             background: var(--blanco);
             color: var(--negro);
-            overflow-x: hidden;
+            line-height: 1.6;
         }
         header {
-            background: var(--gradient-rojo-metal);
+            background: var(--blanco);
             padding: 1rem 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 20px var(--sombra-3d);
-            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px var(--sombra-suave);
+            border-bottom: 3px solid var(--rojo-acento);
         }
         nav {
             max-width: 1200px;
@@ -46,18 +46,15 @@
             padding: 0 2rem;
         }
         .logo {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: bold;
-            background: var(--gradient-rojo-metal);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 2px 2px 4px var(--amarillo-metal);
+            color: var(--negro);
         }
         .logo::before {
             content: '🐷';
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             margin-right: 0.5rem;
+            color: var(--rojo-suave);
         }
         .hero {
             height: 100vh;
@@ -67,32 +64,21 @@
             align-items: center;
             text-align: center;
             padding: 0 2rem;
-            background: url('carnedehamburguesa.png') center/cover no-repeat;
+            background-size: cover;
+            background-position: center;
             position: relative;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(220,38,38,0.7);
-        }
-        .hero > * {
-            position: relative;
-            z-index: 1;
-            color: var(--blanco);
+            background-image: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url('carnedehamburguesa.png');
         }
         .hero h1 {
             font-size: 4rem;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px var(--negro);
-            animation: pulse 2s infinite;
+            color: var(--negro);
+            text-shadow: 1px 1px 3px var(--sombra-suave);
         }
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--gris-oscuro);
         }
         .whatsapp-float {
             position: fixed;
@@ -100,12 +86,11 @@
             height: 60px;
             bottom: 40px;
             right: 40px;
-            background: var(--gradient-rojo-metal);
+            background: var(--rojo-acento);
             color: var(--blanco);
             border-radius: 50px;
-            text-align: center;
             font-size: 30px;
-            box-shadow: 0 4px 20px var(--sombra-3d);
+            box-shadow: 0 4px 20px var(--sombra-fuerte);
             z-index: 1001;
             transition: all 0.3s;
             display: flex;
@@ -115,10 +100,10 @@
         }
         .whatsapp-float:hover {
             transform: scale(1.1);
-            box-shadow: 0 6px 30px var(--sombra-3d);
+            box-shadow: 0 6px 25px var(--sombra-fuerte);
         }
         .section {
-            padding: 5rem 2rem;
+            padding: 4rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -130,16 +115,19 @@
         }
         .flip-card {
             background: var(--blanco);
-            border-radius: 20px;
+            border-radius: 15px;
             overflow: hidden;
             height: 400px;
             perspective: 1000px;
             cursor: pointer;
-            box-shadow: 0 10px 30px var(--sombra-3d);
-            transition: transform 0.3s;
+            box-shadow: 0 5px 20px var(--sombra-suave);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
         }
         .flip-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px var(--sombra-fuerte);
+            border-color: var(--rojo-suave);
         }
         .flip-card-inner {
             position: relative;
@@ -161,7 +149,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 2rem;
+            padding: 1.5rem;
         }
         .flip-card-front img {
             width: 100%;
@@ -169,72 +157,95 @@
             object-fit: cover;
             border-radius: 10px;
         }
-        .flip-card-back {
-            background: var(--gradient-rojo-metal);
-            color: var(--blanco);
-            transform: rotateY(180deg);
+        .flip-card-front h3 {
+            margin-top: 1rem;
+            color: var(--negro);
         }
-        .ubicacion-btn, .delivery-btn {
-            background: var(--gradient-rojo-metal);
+        .flip-card-back {
+            background: var(--blanco);
+            color: var(--negro);
+            transform: rotateY(180deg);
+            border-radius: 15px;
+        }
+        .flip-card-back h3 {
+            color: var(--rojo-suave);
+            margin-bottom: 1rem;
+        }
+        .btn {
+            background: var(--rojo-acento);
             color: var(--blanco);
             border: none;
-            padding: 1rem 2rem;
-            font-size: 1.2rem;
-            border-radius: 50px;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
             cursor: pointer;
-            margin: 1rem;
-            transition: all 0.3s;
+            font-size: 1rem;
             text-decoration: none;
             display: inline-block;
-            box-shadow: 0 5px 15px var(--sombra-3d);
+            margin: 1rem 0.5rem;
+            transition: all 0.3s;
+            box-shadow: 0 3px 10px var(--sombra-suave);
         }
-        .ubicacion-btn:hover, .delivery-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px var(--sombra-3d);
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px var(--sombra-fuerte);
         }
         .testimonios {
-            background: var(--gradient-rojo-metal);
-            color: var(--blanco);
-            border-radius: 20px;
+            background: var(--blanco);
+            border: 2px solid var(--rojo-suave);
+            border-radius: 15px;
             padding: 2rem;
             margin: 2rem 0;
+            box-shadow: 0 5px 20px var(--sombra-suave);
         }
         .opiniones-form {
             background: var(--blanco);
-            color: var(--negro);
+            border: 2px solid var(--gris-oscuro);
             padding: 2rem;
-            border-radius: 20px;
+            border-radius: 15px;
             margin-top: 2rem;
-            box-shadow: 0 10px 30px var(--sombra-3d);
+            box-shadow: 0 5px 20px var(--sombra-suave);
         }
         .opiniones-form textarea {
             width: 100%;
-            height: 100px;
+            min-height: 100px;
             margin-bottom: 1rem;
+            border: 2px solid var(--gris-oscuro);
             border-radius: 10px;
-            border: 2px solid var(--rojo-principal);
             padding: 1rem;
+            font-family: inherit;
+            resize: vertical;
         }
         .btn-submit {
-            background: var(--gradient-rojo-metal);
+            background: var(--rojo-acento);
             color: var(--blanco);
             border: none;
             padding: 1rem 2rem;
-            border-radius: 50px;
+            border-radius: 30px;
             cursor: pointer;
             font-size: 1.1rem;
+            box-shadow: 0 3px 10px var(--sombra-suave);
         }
         .investir {
             text-align: center;
-            background: var(--gradient-rojo-metal);
-            color: var(--blanco);
+            background: linear-gradient(135deg, var(--blanco), #F9FAFB);
             padding: 3rem;
-            border-radius: 20px;
+            border-radius: 15px;
+            border: 2px solid var(--rojo-suave);
+            box-shadow: 0 10px 30px var(--sombra-suave);
+        }
+        .investir h2 {
+            color: var(--rojo-acento);
+            margin-bottom: 1rem;
+        }
+        h2 {
+            text-align: center;
+            color: var(--negro);
+            margin-bottom: 2rem;
         }
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
             .productos { grid-template-columns: 1fr; }
-            .logo { font-size: 2rem; }
+            .logo { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -242,23 +253,23 @@
     <header>
         <nav>
             <div class="logo">Novillito Express</div>
-            <div style="color: var(--blanco);">Los Guayos, por el Elevado</div>
+            <div style="color: var(--gris-oscuro);">Los Guayos, por el Elevado</div>
         </nav>
     </header>
 
     <section class="hero">
         <h1>¡Carnes Premium para Hamburguesas!</h1>
         <p>Paquetes de 6, 12 y 20 unidades. Frescas y listas para tu negocio.</p>
-        <a href="https://wa.me/584244687668?text=¡Hola! Quiero comprar carnes de hamburguesa de Novillito Express 🔥" class="ubicacion-btn">Pedir por WhatsApp</a>
+        <a href="https://wa.me/584244687668?text=¡Hola! Quiero comprar carnes de hamburguesa de Novillito Express 🔥" class="btn">Pedir por WhatsApp</a>
     </section>
 
     <section class="section">
-        <h2 style="text-align: center; color: var(--rojo-principal); margin-bottom: 3rem;">Nuestros Productos Estrella</h2>
+        <h2>Nuestros Productos Estrella</h2>
         <div class="productos">
             <div class="flip-card" onclick="flipCard(this)">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
-                        <img src="carnedehamburguesa.png" alt="Carne de Hamburguesa">
+                        <img src="carnedehamburguesa.png" alt="Carne de Hamburguesa" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkNhcm5lIEhhbWJ1cmd1ZXNhPC90ZXh0Pjwvc3ZnPg=='">
                         <h3>Carne de Hamburguesa</h3>
                     </div>
                     <div class="flip-card-back">
@@ -270,7 +281,7 @@
             <div class="flip-card" onclick="flipCard(this)">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
-                        <img src="carneenjulianas.png" alt="Carne en Julianas">
+                        <img src="carneenjulianas.png" alt="Carne en Julianas" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkNhcm5lIEVuIEp1bGlhbmFzPC90ZXh0Pjwvc3ZnPg=='">
                         <h3>Carne en Julianas</h3>
                     </div>
                     <div class="flip-card-back">
@@ -282,7 +293,7 @@
             <div class="flip-card" onclick="flipCard(this)">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
-                        <img src="carnemolida.png" alt="Carne Molida">
+                        <img src="carnemolida.png" alt="Carne Molida" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkNhcm5lIE1vbGlkYTwvdGV4dD48L3N2Zz4='">
                         <h3>Carne Molida</h3>
                     </div>
                     <div class="flip-card-back">
@@ -294,7 +305,7 @@
             <div class="flip-card" onclick="flipCard(this)">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
-                        <img src="leche.png" alt="Leche">
+                        <img src="leche.png" alt="Leche" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkxlY2hlPC90ZXh0Pjwvc3ZnPg=='">
                         <h3>Leche Fresca</h3>
                     </div>
                     <div class="flip-card-back">
@@ -307,18 +318,18 @@
     </section>
 
     <section class="section">
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 2rem;">
-            <a href="https://maps.app.goo.gl/2uYVhYs8m6RuKwF39" target="_blank" class="ubicacion-btn"><i class="fas fa-map-marker-alt"></i> Ubícame Aquí - Los Guayos</a>
-            <a href="https://wa.me/584244687668?text=¡Hola! Quiero delivery de carnes. Comisión $1 por pedido." class="delivery-btn"><i class="fas fa-motorcycle"></i> Delivery $1</a>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem;">
+            <a href="https://maps.app.goo.gl/2uYVhYs8m6RuKwF39" target="_blank" class="btn"><i class="fas fa-map-marker-alt"></i> Ubícame Aquí</a>
+            <a href="https://wa.me/584244687668?text=¡Hola! Quiero delivery de carnes. Comisión $1." class="btn"><i class="fas fa-motorcycle"></i> Delivery $1</a>
         </div>
     </section>
 
     <section class="section">
-        <h2 style="text-align: center; color: var(--rojo-principal);">Opiniones de Nuestros Clientes</h2>
+        <h2>Opiniones de Nuestros Clientes</h2>
         <div class="testimonios">
-            <p>"¡Excelente carne para hamburguesas! Mi food truck vende el doble." - María, Los Guayos</p>
-            <p>"Carne molida perfecta para empanadas. Recomendado 100%." - Juan, Empresario local</p>
-            <p>"Delivery rápido y fresco siempre. ¡Sigan así!" - Pedro, Fiesta familiar</p>
+            <p><strong>"¡Excelente carne para hamburguesas! Mi food truck vende el doble."</strong> - María, Los Guayos</p>
+            <p><strong>"Carne molida perfecta para empanadas. Recomendado 100%."</strong> - Juan, Empresario</p>
+            <p><strong>"Delivery rápido y fresco siempre. ¡Sigan así!"</strong> - Pedro, Eventos</p>
         </div>
         <div class="opiniones-form">
             <h3>¡Deja tu Opinión!</h3>
@@ -327,13 +338,13 @@
         </div>
     </section>
 
-    <section class="section investir">
+    <section class="investir">
         <h2>¡Locales y Microempresarios!</h2>
-        <p>Invierte con nosotros: compra al por mayor para tus pequeños negocios de comida, eventos y fiestas. ¡Crece tu venta con carnes premium!</p>
-        <a href="https://wa.me/584244687668?text=¡Hola! Quiero invertir/comprar al por mayor para mi negocio." class="ubicacion-btn">¡Únete Ahora!</a>
+        <p>Invierte con nosotros: compra al por mayor para tus pequeños negocios de comida, eventos y fiestas. ¡Crece tu venta con carnes premium de calidad!</p>
+        <a href="https://wa.me/584244687668?text=¡Hola! Quiero info para invertir/comprar al por mayor." class="btn">¡Contactar Ahora!</a>
     </section>
 
-    <a href="https://wa.me/584244687668?text=¡Hola! Visité tu sitio y quiero info de carnes 🍔" class="whatsapp-float" target="_blank" title="WhatsApp Novillito Express">
+    <a href="https://wa.me/584244687668?text=¡Hola! Quiero carnes frescas de Novillito Express 🍔" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -343,23 +354,21 @@
         }
 
         function enviarOpinion() {
-            const opinion = document.getElementById('opinion').value;
+            const opinion = document.getElementById('opinion').value.trim();
             if (opinion) {
-                const msg = encodeURIComponent(`Nueva opinión: ${opinion}`);
+                const msg = encodeURIComponent(`Nueva opinión de cliente: ${opinion}`);
                 window.open(`https://wa.me/584244687668?text=${msg}`, '_blank');
                 document.getElementById('opinion').value = '';
+                alert('¡Gracias! Tu opinión fue enviada a WhatsApp.');
             } else {
-                alert('¡Escribe tu opinión primero!');
+                alert('Por favor, escribe tu opinión.');
             }
         }
 
+        // Smooth scroll header
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(220,38,38,0.95)';
-            } else {
-                header.style.background = 'var(--gradient-rojo-metal)';
-            }
+            header.style.boxShadow = window.scrollY > 50 ? '0 4px 20px var(--sombra-fuerte)' : '0 2px 10px var(--sombra-suave)';
         });
     </script>
 </body>
