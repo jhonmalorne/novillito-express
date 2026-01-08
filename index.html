@@ -1,99 +1,344 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catalogo Parrilla El Sabor - Broaster Crujiente</title>
+    <title>Novillito Express - Carnes Premium para Hamburguesas</title>
+    <meta name="description" content="Carnes de hamburguesa frescas en paquetes de 6, 12 y 20 unidades. Delivery en Los Guayos por solo $1. ¡WhatsApp +58 424-4687668!">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: linear-gradient(to bottom, #ff6b35, #f7931e); color: #333; text-align: center; }
-        h1 { color: white; font-size: 2.5em; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
-        .qr { max-width: 180px; margin: 20px auto; border: 8px solid white; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
-        .menu { background: white; margin: 20px auto; padding: 20px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); max-width: 450px; }
-        .item { display: flex; align-items: center; margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 15px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); transition: transform 0.3s; }
-        .item:hover { transform: scale(1.02); }
-        .item img { width: 90px; height: 90px; object-fit: cover; border-radius: 12px; margin-right: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
-        .item-info { flex: 1; text-align: left; }
-        .precio { font-size: 1.5em; font-weight: bold; color: #ff6b35; background: rgba(255,107,53,0.1); padding: 8px 15px; border-radius: 20px; }
-        .whatsapp-btn { background: #25D366; color: white; padding: 18px 35px; font-size: 1.6em; border: none; border-radius: 50px; text-decoration: none; display: inline-block; margin: 25px; box-shadow: 0 5px 15px rgba(37,211,102,0.4); transition: all 0.3s; }
-        .whatsapp-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(37,211,102,0.6); }
-        .pagos { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 15px; margin-top: 25px; }
-        .pagos h3 { margin-top: 0; }
-        .pagos ul { text-align: left; list-style: none; padding: 0; }
-        .pagos li { margin: 8px 0; font-size: 1.1em; }
-        footer { margin-top: 40px; color: white; font-size: 1em; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
+        :root {
+            --rojo-principal: #DC2626;
+            --rojo-oscuro: #B91C1C;
+            --blanco: #FFFFFF;
+            --amarillo-metal: #D97706;
+            --amarillo-oscuro: #B45309;
+            --sombra-3d: rgba(0,0,0,0.3);
+            --gradient-rojo: linear-gradient(135deg, var(--rojo-principal), var(--rojo-oscuro));
+            --gradient-amarillo: linear-gradient(135deg, var(--amarillo-metal), var(--amarillo-oscuro));
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: var(--gradient-rojo);
+            color: var(--blanco);
+            overflow-x: hidden;
+        }
+        header {
+            background: var(--gradient-rojo);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px var(--sombra-3d);
+            backdrop-filter: blur(10px);
+        }
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: var(--gradient-amarillo);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 2rem;
+            background: url('carnedehamburguesa.jpg') center/cover no-repeat;
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(220,38,38,0.7);
+        }
+        .hero > * {
+            position: relative;
+            z-index: 1;
+        }
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background: #25D366;
+            color: white;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+            z-index: 1001;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37,211,102,0.7);
+        }
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .productos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .flip-card {
+            background: var(--blanco);
+            border-radius: 20px;
+            overflow: hidden;
+            height: 400px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+        .flip-card-front img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .flip-card-back {
+            background: var(--gradient-rojo);
+            transform: rotateY(180deg);
+        }
+        .ubicacion-btn, .delivery-btn {
+            background: var(--gradient-amarillo);
+            color: var(--blanco);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 1rem;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .ubicacion-btn:hover, .delivery-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--sombra-3d);
+        }
+        .testimonios {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .opiniones-form {
+            background: var(--blanco);
+            color: var(--rojo-oscuro);
+            padding: 2rem;
+            border-radius: 20px;
+            margin-top: 2rem;
+        }
+        .opiniones-form textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            border: 2px solid var(--amarillo-metal);
+            padding: 1rem;
+        }
+        .btn-submit {
+            background: var(--gradient-rojo);
+            color: var(--blanco);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+        .investir {
+            text-align: center;
+            background: var(--gradient-amarillo);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .productos { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
-    <h1>🔥 Parrilla El Sabor & Broaster Crujiente 🔥</h1>
-    <p>¡El mejor sabor de Maiquetía! Escanea QR o chatea directo. Entregas rápidas 🚚</p>
-    
-    <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://tuusuario.github.io/catalogo-parrilla/" alt="QR Catálogo Completo" class="qr">
-    <p style="color: white; font-size: 1.1em; font-weight: bold;">📱 Escanea y ve TODO el menú al instante</p>
-    
-    <div class="menu">
-        <h2 style="color: #ff6b35;">🍖 Nuestros 5 Menús Top (Precios en USD)</h2>
-        
-        <div class="item">
-            <img src="https://media.istockphoto.com/id/472719534/photo/grill.jpg?s=612x612&w=is&k=20&c=bI6KH2GLnurqGUuGByTmrBTnMh7ahae4mruAS-5RuyQ=" loading="lazy">
-                <strong>Parrillada Mixta (1 persona)</strong><br>
-                <small>Carne, chorizo, morcilla + yuca frita</small>
+    <header>
+        <nav>
+            <div class="logo">🍔 Novillito Express</div>
+            <div>Los Guayos, por el Elevado</div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>¡Carnes Premium para Hamburguesas!</h1>
+        <p>Paquetes de 6, 12 y 20 unidades. Frescas y listas para tu negocio.</p>
+        <a href="https://wa.me/584244687668?text=¡Hola! Quiero comprar carnes de hamburguesa de Novillito Express 🔥" class="ubicacion-btn">Pedir por WhatsApp</a>
+    </section>
+
+    <section class="section">
+        <h2 style="text-align: center; margin-bottom: 3rem;">Nuestros Productos Estrella</h2>
+        <div class="productos">
+            <div class="flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="carnedehamburguesa.jpg" alt="Carne de Hamburguesa">
+                        <h3>Carne de Hamburguesa</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>⭐ Carne de Hamburguesa Premium</h3>
+                        <p>La protagonista: jugosa, sazonada perfecta para hamburguesas irresistibles. Ideal para food trucks, locales y fiestas. ¡Tu cliente volverá por más! Disponible en 6, 12, 20 unidades.</p>
+                    </div>
+                </div>
             </div>
-            <div class="precio">$8</div>
-        </div>
-        
-        <div class="item">
-            <img src="https://media.istockphoto.com/id/1225311930/es/foto/pollo-frito-caliente-y-crujiente-sobre-papel-blanco.jpg?s=1024x1024&w=is&k=20&c=uIv3Ec83VR-W9d2YOTMg9IilCycNi4FIwOLFOmvAPNw=" loading="lazy">
-            <div class="item-info">
-                <strong>Broaster Pollo 1/4 + Papas</strong><br>
-                <small>Pollo crujiente con ensalada fresca</small>
+            <div class="flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="carneenjulianas.jpg" alt="Carne en Julianas">
+                        <h3>Carne en Julianas</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>⭐ Carne en Julianas</h3>
+                        <p>Perfecta para rellenos, pastas y platos criollos. Fresca y cortada precisa para microempresas de comida rápida y eventos caseros.</p>
+                    </div>
+                </div>
             </div>
-            <div class="precio">$5</div>
-        </div>
-        
-        <div class="item">
-            <img src="https://media.istockphoto.com/id/465936931/photo/pork-spare-ribs-with-salad-and-french-fries.jpg?s=1024x1024&w=is&k=20&c=1756hU_2BDDCXwaHo8zoEPp1DKZJ_lOEYSD0PfPlLZ4=" loading="lazy">
-            <div class="item-info">
-                <strong>Costillas BBQ + Ensalada</strong><br>
-                <small>Costillas jugosas con salsa especial</small>
+            <div class="flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="carnemolida.jpg" alt="Carne Molida">
+                        <h3>Carne Molida</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>⭐ Carne Molida Excelente</h3>
+                        <p>Ideal para buñuelos, empanadas y albóndigas. Textura perfecta para el negocio de empanadas, arepas rellenas y pequeños eventos. ¡Calidad garantizada!</p>
+                    </div>
+                </div>
             </div>
-            <div class="precio">$7</div>
-        </div>
-        
-        <div class="item">
-            <img src="https://cdn.pixabay.com/photo/2022/08/25/17/41/spare-ribs-7410911_1280.jpg" loading="lazy">
-            <div class="item-info">
-                <strong>Combo Familiar (4 personas)</strong><br>
-                <small>Parrillada + broaster + bebidas</small>
+            <div class="flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="leche.jpg" alt="Leche">
+                        <h3>Leche Fresca</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>⭐ Leche Premium</h3>
+                        <p>Complemento ideal para tus postres y bebidas. Pura y natural, perfecta para complementar tus ventas de carne en pequeños negocios.</p>
+                    </div>
+                </div>
             </div>
-            <div class="precio">$25</div>
         </div>
-        
-        <div class="item">
-            <img src="https://cdn.pixabay.com/photo/2018/04/06/23/43/poultry-3297369_1280.jpg" loading="lazy">
-            <div class="item-info">
-                <strong>Broaster Pollo Entero + Arroz</strong><br>
-                <small>Perfecto para compartir en familia</small>
-            </div>
-            <div class="precio">$12</div>
+    </section>
+
+    <section class="section">
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 2rem;">
+            <a href="https://maps.app.goo.gl/2uYVhYs8m6RuKwF39" target="_blank" class="ubicacion-btn"><i class="fas fa-map-marker-alt"></i> Ubícame Aquí - Los Guayos</a>
+            <a href="https://wa.me/584244687668?text=¡Hola! Quiero delivery de carnes. Comisión $1 por pedido." class="delivery-btn"><i class="fas fa-motorcycle"></i> Delivery $1</a>
         </div>
-        
-        <div class="pagos">
-            <h3>💳 Formas de Pago Fáciles:</h3>
-            <ul>
-                <li>✅ Dólares efectivo</li>
-                <li>✅ Bolívar digital (Binance/Bdv)</li>
-                <li>✅ Zelle / AirTM</li>
-            </ul>
+    </section>
+
+    <section class="section">
+        <h2 style="text-align: center;">Opiniones de Nuestros Clientes</h2>
+        <div class="testimonios">
+            <p>"¡Excelente carne para hamburguesas! Mi food truck vende el doble." - María, Los Guayos</p>
+            <p>"Carne molida perfecta para empanadas. Recomendado 100%." - Juan, Empresario local</p>
+            <p>"Delivery rápido y fresco siempre. ¡Sigan así!" - Pedro, Fiesta familiar</p>
         </div>
-    </div>
-    
-    <a href="https://wa.me/584244525765?text=¡Hola!%20Quiero%20pedir:%20" class="whatsapp-btn">📲 Pedir por WhatsApp</a>
-    
-    <footer>
-        Diseñado por <strong>Jhon Alvarez</strong> - Web gratis forever con actualizaciones ilimitadas<br>
-        📞 0424-4525765 | Maiquetía, Vargas 🇻🇪
-    </footer>
+        <div class="opiniones-form">
+            <h3>¡Deja tu Opinión!</h3>
+            <textarea id="opinion" placeholder="Cuéntanos tu experiencia con Novillito Express..."></textarea>
+            <button class="btn-submit" onclick="enviarOpinion()">Enviar a WhatsApp</button>
+        </div>
+    </section>
+
+    <section class="section investir">
+        <h2>¡Locales y Microempresarios!</h2>
+        <p>Invierte con nosotros: compra al por mayor para tus pequeños negocios de comida, eventos y fiestas. ¡Crece tu venta con carnes premium!</p>
+        <a href="https://wa.me/584244687668?text=¡Hola! Quiero invertir/comprar al por mayor para mi negocio." class="ubicacion-btn">¡Únete Ahora!</a>
+    </section>
+
+    <a href="https://wa.me/584244687668?text=¡Hola! Visité novillitoexpress.github.io y quiero info de carnes 🍔" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        function flipCard(card) {
+            card.classList.toggle('flipped');
+        }
+
+        function enviarOpinion() {
+            const opinion = document.getElementById('opinion').value;
+            if (opinion) {
+                const msg = encodeURIComponent(`Nueva opinión: ${opinion}`);
+                window.open(`https://wa.me/584244687668?text=${msg}`, '_blank');
+                document.getElementById('opinion').value = '';
+            } else {
+                alert('¡Escribe tu opinión primero!');
+            }
+        }
+
+        window.addEventListener('scroll', () => {
+            document.querySelector('header').style.background = window.scrollY > 100 ? 'rgba(220,38,38,0.95)' : 'var(--gradient-rojo)';
+        });
+    </script>
 </body>
 </html>
-
