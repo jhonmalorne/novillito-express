@@ -3,372 +3,1629 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Novillito Express - Carnes Premium para Hamburguesas</title>
-    <meta name="description" content="Carnes de hamburguesa frescas en paquetes de 6, 12 y 20 unidades. Delivery en Los Guayos por solo $1. ¡WhatsApp +58 424-4687668!">
+    <title>VarietyVida - Comida de Calidad</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
+        /* Variables CSS y estilos generales */
         :root {
-            --rojo-suave: #EF4444;
-            --rojo-acento: #DC2626;
-            --blanco: #FFFFFF;
-            --negro: #111827;
-            --gris-oscuro: #374151;
-            --sombra-suave: rgba(0,0,0,0.1);
-            --sombra-fuerte: rgba(0,0,0,0.2);
+            --primary-red: #C62828;
+            --primary-red-dark: #9A0007;
+            --primary-red-light: #FF5F52;
+            --white: #FFFFFF;
+            --light-gray: #F5F5F5;
+            --medium-gray: #757575;
+            --dark-gray: #212121;
+            --success-green: #2E7D32;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.12);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
         }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
-            font-family: 'Arial', sans-serif;
-            background: var(--blanco);
-            color: var(--negro);
+            font-family: 'Roboto', sans-serif;
+            color: var(--dark-gray);
             line-height: 1.6;
+            background-color: var(--white);
+            overflow-x: hidden;
         }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-red);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-red);
+            border-radius: 2px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--primary-red);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-red-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+        }
+
+        /* Header y navegación */
         header {
-            background: var(--blanco);
-            padding: 1rem 0;
+            background-color: var(--white);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px var(--sombra-suave);
-            border-bottom: 3px solid var(--rojo-acento);
         }
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
+
+        .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 2rem;
+            padding: 15px 20px;
         }
+
         .logo {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--negro);
-        }
-        .logo::before {
-            content: '🐷';
-            font-size: 1.5rem;
-            margin-right: 0.5rem;
-            color: var(--rojo-suave);
-        }
-        .hero {
-            height: 100vh;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            text-align: center;
-            padding: 0 2rem;
+            gap: 15px;
+        }
+
+        .logo img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary-red);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-red);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-red);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--primary-red);
+            cursor: pointer;
+        }
+
+        /* Hero section */
+        .hero {
+            padding-top: 140px;
+            padding-bottom: 80px;
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
-            position: relative;
-            background-image: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url('carnedehamburguesa.png');
         }
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            color: var(--negro);
-            text-shadow: 1px 1px 3px var(--sombra-suave);
-        }
-        .hero p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            color: var(--gris-oscuro);
-        }
-        .whatsapp-float {
-            position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 40px;
-            right: 40px;
-            background: var(--rojo-acento);
-            color: var(--blanco);
-            border-radius: 50px;
-            font-size: 30px;
-            box-shadow: 0 4px 20px var(--sombra-fuerte);
-            z-index: 1001;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-        }
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 25px var(--sombra-fuerte);
-        }
-        .section {
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .productos {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        .flip-card {
-            background: var(--blanco);
-            border-radius: 15px;
-            overflow: hidden;
-            height: 400px;
-            perspective: 1000px;
-            cursor: pointer;
-            box-shadow: 0 5px 20px var(--sombra-suave);
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-        .flip-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px var(--sombra-fuerte);
-            border-color: var(--rojo-suave);
-        }
-        .flip-card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: transform 0.8s;
-            transform-style: preserve-3d;
-        }
-        .flip-card.flipped .flip-card-inner {
-            transform: rotateY(180deg);
-        }
-        .flip-card-front, .flip-card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
+
+        .hero-content {
             display: flex;
             flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--medium-gray);
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* Currency display */
+        .currency-display {
+            background-color: var(--light-gray);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            margin-top: 40px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .currency-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark-gray);
+        }
+
+        .currency-rate {
+            display: flex;
             justify-content: center;
             align-items: center;
-            padding: 1.5rem;
+            gap: 20px;
+            flex-wrap: wrap;
         }
-        .flip-card-front img {
+
+        .rate-item {
+            background-color: var(--white);
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            min-width: 180px;
+        }
+
+        .rate-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-red);
+        }
+
+        .rate-label {
+            font-size: 0.9rem;
+            color: var(--medium-gray);
+            margin-top: 5px;
+        }
+
+        .currency-update {
+            font-size: 0.85rem;
+            color: var(--medium-gray);
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        /* Categorías de productos */
+        .categories {
+            background-color: var(--light-gray);
+        }
+
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+
+        .category-tab {
+            padding: 12px 28px;
+            background-color: var(--white);
+            border: 2px solid #E0E0E0;
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .category-tab:hover, .category-tab.active {
+            background-color: var(--primary-red);
+            color: var(--white);
+            border-color: var(--primary-red);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .product-image img {
             width: 100%;
-            height: 250px;
+            height: 100%;
             object-fit: cover;
-            border-radius: 10px;
+            transition: var(--transition);
         }
-        .flip-card-front h3 {
-            margin-top: 1rem;
-            color: var(--negro);
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
         }
-        .flip-card-back {
-            background: var(--blanco);
-            color: var(--negro);
-            transform: rotateY(180deg);
-            border-radius: 15px;
+
+        .product-info {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
-        .flip-card-back h3 {
-            color: var(--rojo-suave);
-            margin-bottom: 1rem;
+
+        .product-name {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--dark-gray);
         }
-        .btn {
-            background: var(--rojo-acento);
-            color: var(--blanco);
-            border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 1rem;
-            text-decoration: none;
-            display: inline-block;
-            margin: 1rem 0.5rem;
-            transition: all 0.3s;
-            box-shadow: 0 3px 10px var(--sombra-suave);
+
+        .product-description {
+            color: var(--medium-gray);
+            margin-bottom: 15px;
+            flex-grow: 1;
         }
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px var(--sombra-fuerte);
+
+        .product-price {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 20px;
         }
-        .testimonios {
-            background: var(--blanco);
-            border: 2px solid var(--rojo-suave);
-            border-radius: 15px;
-            padding: 2rem;
-            margin: 2rem 0;
-            box-shadow: 0 5px 20px var(--sombra-suave);
+
+        .price-usd {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary-red);
         }
-        .opiniones-form {
-            background: var(--blanco);
-            border: 2px solid var(--gris-oscuro);
-            padding: 2rem;
-            border-radius: 15px;
-            margin-top: 2rem;
-            box-shadow: 0 5px 20px var(--sombra-suave);
-        }
-        .opiniones-form textarea {
-            width: 100%;
-            min-height: 100px;
-            margin-bottom: 1rem;
-            border: 2px solid var(--gris-oscuro);
-            border-radius: 10px;
-            padding: 1rem;
-            font-family: inherit;
-            resize: vertical;
-        }
-        .btn-submit {
-            background: var(--rojo-acento);
-            color: var(--blanco);
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 30px;
-            cursor: pointer;
+
+        .price-bs {
             font-size: 1.1rem;
-            box-shadow: 0 3px 10px var(--sombra-suave);
+            color: var(--medium-gray);
+            background-color: #FFF3E0;
+            padding: 5px 10px;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
         }
-        .investir {
+
+        .price-bs span {
+            font-weight: 600;
+        }
+
+        /* Métodos de pago */
+        .payment-methods {
+            background-color: var(--white);
+        }
+
+        .payment-methods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .payment-method {
+            background-color: var(--light-gray);
+            border-radius: var(--border-radius);
+            padding: 30px;
             text-align: center;
-            background: linear-gradient(135deg, var(--blanco), #F9FAFB);
-            padding: 3rem;
-            border-radius: 15px;
-            border: 2px solid var(--rojo-suave);
-            box-shadow: 0 10px 30px var(--sombra-suave);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
         }
-        .investir h2 {
-            color: var(--rojo-acento);
-            margin-bottom: 1rem;
+
+        .payment-method:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
         }
-        h2 {
+
+        .payment-logo {
+            height: 70px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .payment-logo img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .payment-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--dark-gray);
+        }
+
+        .payment-details {
+            color: var(--medium-gray);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .qr-container {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--white);
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        .qr-container img {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+        }
+
+        /* Testimonios */
+        .testimonials {
+            background-color: var(--light-gray);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            font-size: 5rem;
+            color: var(--primary-red-light);
+            opacity: 0.2;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-family: serif;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 25px;
+            color: var(--dark-gray);
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-red-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .author-info h4 {
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .author-info p {
+            color: var(--medium-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Preguntas frecuentes */
+        .faq {
+            background-color: var(--white);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: var(--light-gray);
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-question {
+            padding: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            background-color: #EEEEEE;
+        }
+
+        .faq-question h3 {
+            margin-bottom: 0;
+            font-size: 1.2rem;
+            color: var(--dark-gray);
+        }
+
+        .faq-icon {
+            font-size: 1.2rem;
+            color: var(--primary-red);
+            transition: var(--transition);
+        }
+
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 25px 25px 25px;
+            max-height: 300px;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 15px;
+            color: var(--primary-red);
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .faq-whatsapp:hover {
+            color: var(--primary-red-dark);
+            gap: 12px;
+        }
+
+        /* Ubicación */
+        .location {
+            background-color: var(--light-gray);
             text-align: center;
-            color: var(--negro);
-            margin-bottom: 2rem;
         }
+
+        .location-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .location p {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            color: var(--medium-gray);
+        }
+
+        .location-map {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            position: relative;
+            height: 400px;
+            background-color: #E0E0E0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .location-map img {
+            width: 100px;
+            height: auto;
+            opacity: 0.7;
+        }
+
+        .map-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(198, 40, 40, 0.1), rgba(198, 40, 40, 0.05));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 20px;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .map-overlay h3 {
+            color: var(--primary-red);
+            font-size: 1.8rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-gray);
+            color: var(--white);
+            padding: 70px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-logo img {
+            height: 70px;
+            margin-bottom: 20px;
+        }
+
+        .footer-about p {
+            margin-bottom: 25px;
+            color: #BDBDBD;
+        }
+
+        .footer-links h3, .footer-contact h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            color: var(--white);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #BDBDBD;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-red-light);
+            gap: 15px;
+        }
+
+        .footer-contact p {
+            color: #BDBDBD;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: #424242;
+            border-radius: 50%;
+            color: var(--white);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            background-color: var(--primary-red);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #424242;
+            padding-top: 30px;
+            text-align: center;
+            color: #9E9E9E;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom a {
+            color: var(--primary-red-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-bottom a:hover {
+            color: var(--primary-red);
+        }
+
+        .nexus-credit {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #424242;
+        }
+
+        .nexus-credit img {
+            height: 40px;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .nexus-credit img:hover {
+            opacity: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .nav-links {
+                gap: 20px;
+            }
+        }
+
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .productos { grid-template-columns: 1fr; }
-            .logo { font-size: 1.5rem; }
+            .header-container {
+                padding: 15px;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                padding: 30px 0;
+                gap: 25px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                transform: translateY(-150%);
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero {
+                padding-top: 120px;
+                padding-bottom: 60px;
+            }
+            
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .hero-btns .btn {
+                width: 100%;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .category-tabs {
+                gap: 10px;
+            }
+            
+            .category-tab {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .rate-item {
+                min-width: 140px;
+                padding: 12px 18px;
+            }
+            
+            .rate-value {
+                font-size: 1.5rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
         }
     </style>
 </head>
 <body>
+    <!-- Header y Navegación -->
     <header>
-        <nav>
-            <div class="logo">Novillito Express</div>
-            <div style="color: var(--gris-oscuro);">Los Guayos, por el Elevado</div>
-        </nav>
+        <div class="container header-container">
+            <div class="logo">
+                <!-- Logo de la empresa -->
+                <img src="logovarietyvida.jpeg" alt="VarietyVida Logo">
+                <div class="logo-text">VarietyVida</div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav class="nav-links" id="navLinks">
+                <a href="#inicio">Inicio</a>
+                <a href="#categorias">Productos</a>
+                <a href="#pagos">Métodos de Pago</a>
+                <a href="#testimonios">Testimonios</a>
+                <a href="#faq">Preguntas Frecuentes</a>
+                <a href="#ubicacion">Ubicación</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+        </div>
     </header>
 
-    <section class="hero">
-        <h1>¡Carnes Premium para Hamburguesas!</h1>
-        <p>Paquetes de 6, 12 y 20 unidades. Frescas y listas para tu negocio.</p>
-        <a href="https://wa.me/584244687668?text=¡Hola! Quiero comprar carnes de hamburguesa de Novillito Express 🔥" class="btn">Pedir por WhatsApp</a>
+    <!-- Sección Hero -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1>Calidad y Sabor en Cada Producto</h1>
+                <p>En VarietyVida nos especializamos en ofrecerte los mejores productos alimenticios, desde postres tradicionales hasta cortes selectos de carne. Calidad garantizada para tu hogar y tus eventos especiales.</p>
+                
+                <div class="hero-btns">
+                    <a href="#categorias" class="btn">Ver Productos</a>
+                    <a href="https://wa.me/584244525765?text=Hola%20VarietyVida,%20me%20interesan%20sus%20productos" class="btn btn-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Pedir por WhatsApp
+                    </a>
+                </div>
+                
+                <!-- Display de tasa de cambio -->
+                <div class="currency-display">
+                    <h3 class="currency-title">Tasa de Cambio Oficial</h3>
+                    <div class="currency-rate">
+                        <div class="rate-item">
+                            <div class="rate-value" id="usd-rate">1 USD</div>
+                            <div class="rate-label">Dólar Estadounidense</div>
+                        </div>
+                        <div class="rate-item">
+                            <div class="rate-value" id="bs-rate">Cargando...</div>
+                            <div class="rate-label">Bolívares Venezolanos</div>
+                        </div>
+                    </div>
+                    <div class="currency-update" id="rate-update">Actualizando...</div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section class="section">
-        <h2>Nuestros Productos Estrella</h2>
-        <div class="productos">
-            <div class="flip-card" onclick="flipCard(this)">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img src="carnedehamburguesa.png" alt="Carne de Hamburguesa" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkNhcm5lIEhhbWJ1cmd1ZXNhPC90ZXh0Pjwvc3ZnPg=='">
-                        <h3>Carne de Hamburguesa</h3>
+    <!-- Categorías de Productos -->
+    <section class="categories" id="categorias">
+        <div class="container">
+            <h2 class="section-title">Nuestros Productos</h2>
+            
+            <div class="category-tabs">
+                <div class="category-tab active" data-category="postres">Postres y Dulces</div>
+                <div class="category-tab" data-category="carniceria">Carnicería</div>
+                <div class="category-tab" data-category="charcuteria">Charcutería</div>
+                <div class="category-tab" data-category="eventos">Eventos</div>
+            </div>
+            
+            <!-- Productos - Postres y Dulces -->
+            <div class="products-grid" id="postres-products">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="jaleademango.jpg" alt="Dulce de Mango">
                     </div>
-                    <div class="flip-card-back">
-                        <h3>⭐ Carne de Hamburguesa Premium</h3>
-                        <p>La protagonista: jugosa, sazonada perfecta para hamburguesas irresistibles. Ideal para food trucks, locales y fiestas. ¡Tu cliente volverá por más! Disponible en 6, 12, 20 unidades.</p>
+                    <div class="product-info">
+                        <h3 class="product-name">Dulce de Mango</h3>
+                        <p class="product-description">Delicioso dulce de mango natural, elaborado artesanalmente con los mejores ingredientes.</p>
+                        <div class="product-price">
+                            <div class="price-usd">2 $ / unidad</div>
+                            <div class="price-bs">
+                                <span>Precio en Bs:</span>
+                                <span id="price-mango">Cargando...</span>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/584244525765?text=Hola%20VarietyVida,%20quiero%20pedir%20Dulce%20de%20Mango" class="btn" target="_blank">Pedir Ahora</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="arrozconleche.jpg" alt="Arroz con Leche">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Arroz con Leche</h3>
+                        <p class="product-description">Tradicional arroz con leche, cremoso y con el punto justo de dulzor. Ideal para cualquier ocasión.</p>
+                        <div class="product-price">
+                            <div class="price-usd">4 $ / unidad</div>
+                            <div class="price-bs">
+                                <span>Precio en Bs:</span>
+                                <span id="price-arroz">Cargando...</span>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/584244525765?text=Hola%20VarietyVida,%20quiero%20pedir%20Arroz%20con%20Leche" class="btn" target="_blank">Pedir Ahora</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="yogurt.jpg" alt="Yogurt Casero">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Yogurt Casero</h3>
+                        <p class="product-description">Yogurt natural hecho en casa, sin conservantes, fresco y nutritivo.</p>
+                        <div class="product-price">
+                            <div class="price-usd">5 $ / unidad</div>
+                            <div class="price-bs">
+                                <span>Precio en Bs:</span>
+                                <span id="price-yogurt">Cargando...</span>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/584244525765?text=Hola%20VarietyVida,%20quiero%20pedir%20Yogurt%20Casero" class="btn" target="_blank">Pedir Ahora</a>
                     </div>
                 </div>
             </div>
-            <div class="flip-card" onclick="flipCard(this)">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img src="carneenjulianas.png" alt="Carne en Julianas" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkNhcm5lIEVuIEp1bGlhbmFzPC90ZXh0Pjwvc3ZnPg=='">
-                        <h3>Carne en Julianas</h3>
+            
+            <!-- Productos - Carnicería (oculto inicialmente) -->
+            <div class="products-grid" id="carniceria-products" style="display: none;">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="carnemolida.jpg" alt="Carne Molida">
                     </div>
-                    <div class="flip-card-back">
-                        <h3>⭐ Carne en Julianas</h3>
-                        <p>Perfecta para rellenos, pastas y platos criollos. Fresca y cortada precisa para microempresas de comida rápida y eventos caseros.</p>
+                    <div class="product-info">
+                        <h3 class="product-name">Carne Molida</h3>
+                        <p class="product-description">Carne de res molida fresca, perfecta para hamburguesas, pastel de carne y salsas.</p>
+                        <div class="product-price">
+                            <div class="price-usd">12.5 $ / kg</div>
+                            <div class="price-bs">
+                                <span>Precio en Bs:</span>
+                                <span id="price-molida">Cargando...</span>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/584244525765?text=Hola%20VarietyVida,%20quiero%20pedir%20Carne%20Molida" class="btn" target="_blank">Pedir Ahora</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="carneparamechar.jpg" alt="Carne para Mech">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Carne para Mech</h3>
+                        <p class="product-description">Corte especial para mechar, ideal para preparar carne mechada venezolana.</p>
+                        <div class="product-price">
+                            <div class="price-usd">12.5 $ / kg</div>
+                            <div class="price-bs">
+                                <span>Precio en Bs:</span>
+                                <span id="price-mechar">Cargando...</span>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/584244525765?text=Hola%20VarietyVida,%20quiero%20pedir%20Carne%20para%20Mechar" class="btn" target="_blank">Pedir Ahora</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="bisteck.png" alt="Bistec">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Bistec</h3>
+                        <p class="product-description">Cortes finos de bistec, tiernos y jugosos, listos para la parrilla o sartén.</p>
+                        <div class="product-price">
+                            <div class="price-usd">12.5 $ / kg</div>
+                            <div class="price-bs">
+                                <span>Precio en Bs:</span>
+                                <span id="price-bistec">Cargando...</span>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/584244525765?text=Hola%20VarietyVida,%20quiero%20pedir%20Bistec" class="btn" target="_blank">Pedir Ahora</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="carneparaguisar.jpg" alt="Carne para Guisar">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Carne para Guisar</h3>
+                        <p class="product-description">Cortes ideales para guisos, estofados y sopas. Con el punto justo de grasa para mayor sabor.</p>
+                        <div class="product-price">
+                            <div class="price-usd">12.5 $ / kg</div>
+                            <div class="price-bs">
+                                <span>Precio en Bs:</span>
+                                <span id="price-guisar">Cargando...</span>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/584244525765?text=Hola%20VarietyVida,%20quiero%20pedir%20Carne%20para%20Guisar" class="btn" target="_blank">Pedir Ahora</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="polloentero.png" alt="Pollo Entero">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Pollo Entero</h3>
+                        <p class="product-description">Pollo fresco entero, perfecto para asar, hornear o preparar en diferentes recetas.</p>
+                        <div class="product-price">
+                            <div class="price-usd">5 $ / kg</div>
+                            <div class="price-bs">
+                                <span>Precio en Bs:</span>
+                                <span id="price-pollo">Cargando...</span>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/584244525765?text=Hola%20VarietyVida,%20quiero%20pedir%20Pollo%20Entero" class="btn" target="_blank">Pedir Ahora</a>
                     </div>
                 </div>
             </div>
-            <div class="flip-card" onclick="flipCard(this)">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img src="carnemolida.png" alt="Carne Molida" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkNhcm5lIE1vbGlkYTwvdGV4dD48L3N2Zz4='">
-                        <h3>Carne Molida</h3>
+            
+            <!-- Productos - Charcutería (oculto inicialmente) -->
+            <div class="products-grid" id="charcuteria-products" style="display: none;">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="chorizo.jpg" alt="Chorizo">
                     </div>
-                    <div class="flip-card-back">
-                        <h3>⭐ Carne Molida Excelente</h3>
-                        <p>Ideal para buñuelos, empanadas y albóndigas. Textura perfecta para el negocio de empanadas, arepas rellenas y pequeños eventos. ¡Calidad garantizada!</p>
+                    <div class="product-info">
+                        <h3 class="product-name">Chorizo</h3>
+                        <p class="product-description">Chorizo artesanal, bien sazonado y con el auténtico sabor tradicional.</p>
+                        <div class="product-price">
+                            <div class="price-usd">2 $ / kg</div>
+                            <div class="price-bs">
+                                <span>Precio en Bs:</span>
+                                <span id="price-chorizo">Cargando...</span>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/584244525765?text=Hola%20VarietyVida,%20quiero%20pedir%20Chorizo" class="btn" target="_blank">Pedir Ahora</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="salchicha.jpg" alt="Salchicha">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Salchicha</h3>
+                        <p class="product-description">Salchichas frescas de calidad, perfectas para parrillas, desayunos y comidas rápidas.</p>
+                        <div class="product-price">
+                            <div class="price-usd">1.8 $ / kg</div>
+                            <div class="price-bs">
+                                <span>Precio en Bs:</span>
+                                <span id="price-salchicha">Cargando...</span>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/584244525765?text=Hola%20VarietyVida,%20quiero%20pedir%20Salchicha" class="btn" target="_blank">Pedir Ahora</a>
                     </div>
                 </div>
             </div>
-            <div class="flip-card" onclick="flipCard(this)">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img src="leche.png" alt="Leche" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkxlY2hlPC90ZXh0Pjwvc3ZnPg=='">
-                        <h3>Leche Fresca</h3>
+            
+            <!-- Productos - Eventos (oculto inicialmente) -->
+            <div class="products-grid" id="eventos-products" style="display: none;">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="carnedehamburguesa.png" alt="Carne de Hamburguesa">
                     </div>
-                    <div class="flip-card-back">
-                        <h3>⭐ Leche Premium</h3>
-                        <p>Complemento ideal para tus postres y bebidas. Pura y natural, perfecta para complementar tus ventas de carne en pequeños negocios.</p>
+                    <div class="product-info">
+                        <h3 class="product-name">Carne de Hamburguesa</h3>
+                        <p class="product-description">Pack de 6 unidades de carne para hamburguesa, listas para la parrilla. Perfectas para eventos.</p>
+                        <div class="product-price">
+                            <div class="price-usd">2 $ / pack (6 unidades)</div>
+                            <div class="price-bs">
+                                <span>Precio en Bs:</span>
+                                <span id="price-hamburguesa">Cargando...</span>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/584244525765?text=Hola%20VarietyVida,%20quiero%20pedir%20Carne%20de%20Hamburguesa" class="btn" target="_blank">Pedir Ahora</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="bolasdecarne.jpg" alt="Bolitas de Carne">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Bolitas de Carne</h3>
+                        <p class="product-description">Deliciosas bolitas de carne sazonadas, ideales para fiestas, cócteles y eventos especiales.</p>
+                        <div class="product-price">
+                            <div class="price-usd">5 $ / kg</div>
+                            <div class="price-bs">
+                                <span>Precio en Bs:</span>
+                                <span id="price-bolitas">Cargando...</span>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/584244525765?text=Hola%20VarietyVida,%20quiero%20pedir%20Bolitas%20de%20Carne" class="btn" target="_blank">Pedir Ahora</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section">
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem;">
-            <a href="https://maps.app.goo.gl/2uYVhYs8m6RuKwF39" target="_blank" class="btn"><i class="fas fa-map-marker-alt"></i> Ubícame Aquí</a>
-            <a href="https://wa.me/584244687668?text=¡Hola! Quiero delivery de carnes. Comisión $1." class="btn"><i class="fas fa-motorcycle"></i> Delivery $1</a>
+    <!-- Métodos de Pago -->
+    <section class="payment-methods" id="pagos">
+        <div class="container">
+            <h2 class="section-title">Métodos de Pago</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 50px; color: var(--medium-gray); font-size: 1.1rem;">
+                Aceptamos diferentes métodos de pago para facilitar tu compra. Puedes pagar en dólares o bolívares según tu preferencia.
+            </p>
+            
+            <div class="payment-methods-grid">
+                <!-- Pago Móvil -->
+                <div class="payment-method">
+                    <div class="payment-logo">
+                        <img src="logopagomovil.png" alt="Pago Móvil">
+                    </div>
+                    <h3 class="payment-title">Pago Móvil</h3>
+                    <div class="payment-details">
+                        <p><strong>Banco:</strong> Mercantil</p>
+                        <p><strong>Teléfono:</strong> 0424-4525765</p>
+                        <p><strong>C.I.:</strong> 16.897.477</p>
+                    </div>
+                    <div class="qr-container">
+                        <!-- QR de Pago Móvil (debes generar uno con tus datos) -->
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=PagoMóvil%3A%20Banco%20Mercantil%2C%20Tel%3A%2004244525765%2C%20CI%3A%2016897477" alt="QR Pago Móvil">
+                    </div>
+                </div>
+                
+                <!-- Binance -->
+                <div class="payment-method">
+                    <div class="payment-logo">
+                        <img src="logobinance.png" alt="Binance">
+                    </div>
+                    <h3 class="payment-title">Binance</h3>
+                    <div class="payment-details">
+                        <p>Aceptamos pagos a través de Binance Pay o transferencias en criptomonedas (USDT, BUSD, BNB).</p>
+                        <p>Contáctanos por WhatsApp para obtener nuestra dirección de wallet.</p>
+                    </div>
+                    <a href="https://wa.me/584244525765?text=Hola%20VarietyVida,%20quiero%20información%20para%20pagar%20por%20Binance" class="btn" target="_blank">Solicitar Wallet</a>
+                </div>
+                
+                <!-- Zelle -->
+                <div class="payment-method">
+                    <div class="payment-logo">
+                        <img src="Zelle_logo.jpg" alt="Zelle">
+                    </div>
+                    <h3 class="payment-title">Zelle</h3>
+                    <div class="payment-details">
+                        <p>Aceptamos pagos por Zelle desde cuentas bancarias en Estados Unidos.</p>
+                        <p>Contáctanos para recibir la información de nuestra cuenta Zelle.</p>
+                    </div>
+                    <a href="https://wa.me/584244525765?text=Hola%20VarietyVida,%20quiero%20información%20para%20pagar%20por%20Zelle" class="btn" target="_blank">Solicitar Datos</a>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section class="section">
-        <h2>Opiniones de Nuestros Clientes</h2>
-        <div class="testimonios">
-            <p><strong>"¡Excelente carne para hamburguesas! Mi food truck vende el doble."</strong> - María, Los Guayos</p>
-            <p><strong>"Carne molida perfecta para empanadas. Recomendado 100%."</strong> - Juan, Empresario</p>
-            <p><strong>"Delivery rápido y fresco siempre. ¡Sigan así!"</strong> - Pedro, Eventos</p>
-        </div>
-        <div class="opiniones-form">
-            <h3>¡Deja tu Opinión!</h3>
-            <textarea id="opinion" placeholder="Cuéntanos tu experiencia con Novillito Express..."></textarea>
-            <button class="btn-submit" onclick="enviarOpinion()">Enviar a WhatsApp</button>
+    <!-- Testimonios -->
+    <section class="testimonials" id="testimonios">
+        <div class="container">
+            <h2 class="section-title">Lo que Dicen Nuestros Clientes</h2>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Los productos de VarietyVida son de excelente calidad. El arroz con leche es el mejor que he probado, y la carne siempre está fresca. Mi familia ya es cliente habitual."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">M</div>
+                        <div class="author-info">
+                            <h4>María González</h4>
+                            <p>Cliente desde 2023</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Para mis eventos siempre confío en VarietyVida. Las bolitas de carne son un éxito en todas mis fiestas, y el servicio al cliente es excepcional. Los recomiendo 100%."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">C</div>
+                        <div class="author-info">
+                            <h4>Carlos Rodríguez</h4>
+                            <p>Cliente para eventos</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"La relación calidad-precio es insuperable. El pollo entero siempre fresco y a buen precio, y el yogurt casero es delicioso. Ahora solo compro aquí mis productos."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">A</div>
+                        <div class="author-info">
+                            <h4>Ana Martínez</h4>
+                            <p>Cliente frecuente</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section class="investir">
-        <h2>¡Locales y Microempresarios!</h2>
-        <p>Invierte con nosotros: compra al por mayor para tus pequeños negocios de comida, eventos y fiestas. ¡Crece tu venta con carnes premium de calidad!</p>
-        <a href="https://wa.me/584244687668?text=¡Hola! Quiero info para invertir/comprar al por mayor." class="btn">¡Contactar Ahora!</a>
+    <!-- Preguntas Frecuentes -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2 class="section-title">Preguntas Frecuentes</h2>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Qué pasa si mi hijo falta?</h3>
+                        <div class="faq-icon">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Entendemos que pueden surgir imprevistos. Si tu hijo falta, puedes contactarnos para reprogramar o gestionar un reembolso según corresponda. La comunicación constante es clave para nosotros.</p>
+                        <a href="https://wa.me/584244525765?text=Hola%20VarietyVida,%20tengo%20una%20consulta%20sobre%20qué%20pasa%20si%20mi%20hijo%20falta" class="faq-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Cómo se manejan las evaluaciones?</h3>
+                        <div class="faq-icon">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Realizamos evaluaciones periódicas para monitorear el progreso de los estudiantes. Los resultados se comparten con los padres y utilizamos esta información para personalizar el apoyo educativo.</p>
+                        <a href="https://wa.me/584244525765?text=Hola%20VarietyVida,%20quiero%20información%20sobre%20cómo%20se%20manejan%20las%20evaluaciones" class="faq-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Cuáles son los horarios de atención?</h3>
+                        <div class="faq-icon">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Atendemos de lunes a sábado de 8:00 am a 6:00 pm. Puedes hacer tus pedidos en cualquier momento a través de WhatsApp y te responderemos en el horario de atención.</p>
+                        <a href="https://wa.me/584244525765?text=Hola%20VarietyVida,%20quiero%20saber%20los%20horarios%20de%20atención" class="faq-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Hacen entregas a domicilio?</h3>
+                        <div class="faq-icon">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sí, realizamos entregas a domicilio en la zona. El costo de envío depende de la ubicación. Contáctanos para coordinar la entrega de tu pedido.</p>
+                        <a href="https://wa.me/584244525765?text=Hola%20VarietyVida,%20quiero%20saber%20si%20hacen%20entregas%20a%20domicilio" class="faq-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <a href="https://wa.me/584244687668?text=¡Hola! Quiero carnes frescas de Novillito Express 🍔" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <!-- Ubicación -->
+    <section class="location" id="ubicacion">
+        <div class="container">
+            <h2 class="section-title">Nuestra Ubicación</h2>
+            
+            <div class="location-content">
+                <p>Visítanos en nuestro local o utiliza el mapa interactivo para encontrar la mejor ruta hacia nosotros.</p>
+                
+                <div class="location-map">
+                    <img src="mapadevenezuela.png" alt="Mapa de Venezuela">
+                    <div class="map-overlay">
+                        <h3>Visita Nuestro Local</h3>
+                        <p>Haz clic en el botón para ver nuestra ubicación exacta en Google Maps</p>
+                        <a href="https://maps.app.goo.gl/Yco82LzVs3sJVcDS7" class="btn" target="_blank">
+                            <i class="fas fa-map-marker-alt"></i> Ver en Google Maps
+                        </a>
+                    </div>
+                </div>
+                
+                <a href="https://maps.app.goo.gl/Yco82LzVs3sJVcDS7" class="btn" target="_blank">
+                    <i class="fas fa-directions"></i> Cómo Llegar
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <img src="logovarietyvida.jpeg" alt="VarietyVida Logo">
+                    </div>
+                    <p>VarietyVida ofrece productos alimenticios de la más alta calidad, desde postres tradicionales hasta cortes selectos de carne. Comprometidos con la satisfacción de nuestros clientes.</p>
+                    <div class="footer-social">
+                        <a href="https://wa.me/584244525765" target="_blank" title="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://facebook.com" target="_blank" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="#inicio"><i class="fas fa-chevron-right"></i> Inicio</a></li>
+                        <li><a href="#categorias"><i class="fas fa-chevron-right"></i> Productos</a></li>
+                        <li><a href="#pagos"><i class="fas fa-chevron-right"></i> Métodos de Pago</a></li>
+                        <li><a href="#testimonios"><i class="fas fa-chevron-right"></i> Testimonios</a></li>
+                        <li><a href="#faq"><i class="fas fa-chevron-right"></i> Preguntas Frecuentes</a></li>
+                        <li><a href="#ubicacion"><i class="fas fa-chevron-right"></i> Ubicación</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contacto</h3>
+                    <p><i class="fas fa-phone-alt"></i> Teléfono: 0424-4525765</p>
+                    <p><i class="fab fa-whatsapp"></i> WhatsApp: 0424-4525765</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Ubicación: <a href="https://maps.app.goo.gl/Yco82LzVs3sJVcDS7" target="_blank">Ver en Google Maps</a></p>
+                    <p><i class="far fa-clock"></i> Horario: Lunes a Sábado 8:00 am - 6:00 pm</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 VarietyVida. Todos los derechos reservados.</p>
+                <p>Diseñado por <a href="https://jhonmalorne.github.io/nexus.net/" target="_blank">Nexus Marketing</a> - Expertos en soluciones digitales para tu negocio.</p>
+                
+                <div class="nexus-credit">
+                    <span>Diseñado por:</span>
+                    <a href="https://jhonmalorne.github.io/nexus.net/" target="_blank">
+                        <img src="logomarketin.jpeg" alt="Nexus Marketing">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        function flipCard(card) {
-            card.classList.toggle('flipped');
-        }
-
-        function enviarOpinion() {
-            const opinion = document.getElementById('opinion').value.trim();
-            if (opinion) {
-                const msg = encodeURIComponent(`Nueva opinión de cliente: ${opinion}`);
-                window.open(`https://wa.me/584244687668?text=${msg}`, '_blank');
-                document.getElementById('opinion').value = '';
-                alert('¡Gracias! Tu opinión fue enviada a WhatsApp.');
-            } else {
-                alert('Por favor, escribe tu opinión.');
+        // Funcionalidad para el menú móvil
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Cerrar menú al hacer clic en un enlace
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Funcionalidad para las pestañas de categorías
+        const categoryTabs = document.querySelectorAll('.category-tab');
+        const productSections = {
+            postres: document.getElementById('postres-products'),
+            carniceria: document.getElementById('carniceria-products'),
+            charcuteria: document.getElementById('charcuteria-products'),
+            eventos: document.getElementById('eventos-products')
+        };
+        
+        categoryTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remover clase active de todas las pestañas
+                categoryTabs.forEach(t => t.classList.remove('active'));
+                
+                // Añadir clase active a la pestaña clickeada
+                tab.classList.add('active');
+                
+                // Ocultar todas las secciones de productos
+                Object.values(productSections).forEach(section => {
+                    section.style.display = 'none';
+                });
+                
+                // Mostrar la sección correspondiente
+                const category = tab.getAttribute('data-category');
+                productSections[category].style.display = 'grid';
+            });
+        });
+        
+        // Funcionalidad para las preguntas frecuentes
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                // Cerrar otros items abiertos
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Abrir/cerrar el item clickeado
+                item.classList.toggle('active');
+            });
+        });
+        
+        // Funcionalidad para obtener la tasa de cambio
+        let exchangeRate = 0;
+        let lastUpdate = '';
+        
+        async function getExchangeRate() {
+            try {
+                const response = await fetch('https://ve.dolarapi.com/v1/dolares/oficial');
+                const data = await response.json();
+                
+                if (data && data.promedio) {
+                    exchangeRate = data.promedio;
+                    lastUpdate = new Date(data.fecha).toLocaleString('es-VE');
+                    
+                    // Actualizar display de tasa
+                    document.getElementById('bs-rate').textContent = `${exchangeRate.toFixed(2)} Bs`;
+                    document.getElementById('rate-update').textContent = `Actualizado: ${lastUpdate}`;
+                    
+                    // Actualizar precios en bolívares
+                    updatePricesInBs();
+                } else {
+                    throw new Error('Datos no disponibles');
+                }
+            } catch (error) {
+                console.error('Error obteniendo tasa de cambio:', error);
+                document.getElementById('bs-rate').textContent = 'Error';
+                document.getElementById('rate-update').textContent = 'No se pudo obtener la tasa de cambio';
+                
+                // Usar tasa por defecto si falla la API
+                exchangeRate = 35.50; // Tasa aproximada por defecto
+                updatePricesInBs();
             }
         }
-
-        // Smooth scroll header
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            header.style.boxShadow = window.scrollY > 50 ? '0 4px 20px var(--sombra-fuerte)' : '0 2px 10px var(--sombra-suave)';
+        
+        function updatePricesInBs() {
+            // Definir precios en dólares
+            const prices = {
+                mango: 2,
+                arroz: 4,
+                yogurt: 5,
+                molida: 12.5,
+                mechar: 12.5,
+                bistec: 12.5,
+                guisar: 12.5,
+                pollo: 5,
+                chorizo: 2,
+                salchicha: 1.8,
+                hamburguesa: 2,
+                bolitas: 5
+            };
+            
+            // Actualizar cada precio
+            for (const [product, priceUSD] of Object.entries(prices)) {
+                const priceBs = (priceUSD * exchangeRate).toFixed(2);
+                const element = document.getElementById(`price-${product}`);
+                if (element) {
+                    element.textContent = `${priceBs} Bs`;
+                }
+            }
+        }
+        
+        // Obtener tasa de cambio al cargar la página
+        document.addEventListener('DOMContentLoaded', () => {
+            getExchangeRate();
+            
+            // Actualizar cada 5 minutos
+            setInterval(getExchangeRate, 5 * 60 * 1000);
+            
+            // Smooth scroll para enlaces internos
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        // Cerrar menú móvil si está abierto
+                        if (navLinks.classList.contains('active')) {
+                            navLinks.classList.remove('active');
+                            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                        }
+                        
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Animación al hacer scroll
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            fadeElements.forEach(el => {
+                el.style.opacity = 0;
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                observer.observe(el);
+            });
+        });
+        
+        // Manejar el envío del formulario de contacto (simulado)
+        document.addEventListener('submit', function(e) {
+            if (e.target.matches('form')) {
+                e.preventDefault();
+                alert('Gracias por tu mensaje. Te contactaremos pronto por WhatsApp.');
+                e.target.reset();
+            }
         });
     </script>
 </body>
