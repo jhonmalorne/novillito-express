@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VarietyVida - Comida de Calidad</title>
+    <title>VarietyVida - Productos Alimenticios de Calidad</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        /* Variables CSS y estilos generales */
+        /* Variables CSS basadas en colores rojo y blanco del logo */
         :root {
             --primary-red: #C62828;
             --primary-red-dark: #9A0007;
             --primary-red-light: #FF5F52;
+            --primary-red-bg: rgba(198, 40, 40, 0.05);
             --white: #FFFFFF;
+            --off-white: #FAFAFA;
             --light-gray: #F5F5F5;
             --medium-gray: #757575;
             --dark-gray: #212121;
-            --success-green: #2E7D32;
             --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.12);
             --border-radius: 12px;
@@ -188,9 +189,20 @@
         .hero {
             padding-top: 140px;
             padding-bottom: 80px;
-            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
+            background-color: var(--off-white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-red-bg) 0%, transparent 100%);
+            z-index: 0;
         }
 
         .hero-content {
@@ -200,6 +212,8 @@
             text-align: center;
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .hero h1 {
@@ -224,7 +238,7 @@
 
         /* Currency display */
         .currency-display {
-            background-color: var(--light-gray);
+            background-color: var(--white);
             padding: 25px;
             border-radius: var(--border-radius);
             margin-top: 40px;
@@ -232,6 +246,7 @@
             box-shadow: var(--shadow);
             max-width: 500px;
             width: 100%;
+            border-left: 5px solid var(--primary-red);
         }
 
         .currency-title {
@@ -249,11 +264,12 @@
         }
 
         .rate-item {
-            background-color: var(--white);
+            background-color: var(--off-white);
             padding: 15px 25px;
             border-radius: 10px;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
             min-width: 180px;
+            border: 1px solid rgba(198, 40, 40, 0.1);
         }
 
         .rate-value {
@@ -277,7 +293,7 @@
 
         /* Categorías de productos */
         .categories {
-            background-color: var(--light-gray);
+            background-color: var(--white);
         }
 
         .category-tabs {
@@ -318,6 +334,7 @@
             transition: var(--transition);
             display: flex;
             flex-direction: column;
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .product-card:hover {
@@ -328,6 +345,7 @@
         .product-image {
             height: 200px;
             overflow: hidden;
+            background-color: var(--light-gray);
         }
 
         .product-image img {
@@ -376,20 +394,27 @@
         .price-bs {
             font-size: 1.1rem;
             color: var(--medium-gray);
-            background-color: #FFF3E0;
-            padding: 5px 10px;
+            background-color: var(--primary-red-bg);
+            padding: 8px 12px;
             border-radius: 6px;
             display: flex;
             justify-content: space-between;
+            align-items: center;
         }
 
         .price-bs span {
             font-weight: 600;
         }
 
+        .price-converted {
+            font-size: 1rem;
+            color: var(--primary-red);
+            font-weight: 600;
+        }
+
         /* Métodos de pago */
         .payment-methods {
-            background-color: var(--white);
+            background-color: var(--off-white);
         }
 
         .payment-methods-grid {
@@ -400,12 +425,13 @@
         }
 
         .payment-method {
-            background-color: var(--light-gray);
+            background-color: var(--white);
             border-radius: var(--border-radius);
             padding: 30px;
             text-align: center;
             box-shadow: var(--shadow);
             transition: var(--transition);
+            border-top: 4px solid var(--primary-red);
         }
 
         .payment-method:hover {
@@ -445,6 +471,7 @@
             background-color: var(--white);
             border-radius: 10px;
             display: inline-block;
+            border: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         .qr-container img {
@@ -453,151 +480,9 @@
             object-fit: contain;
         }
 
-        /* Testimonios */
-        .testimonials {
-            background-color: var(--light-gray);
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .testimonial-card {
-            background-color: var(--white);
-            border-radius: var(--border-radius);
-            padding: 30px;
-            box-shadow: var(--shadow);
-            position: relative;
-        }
-
-        .testimonial-card::before {
-            content: '"';
-            font-size: 5rem;
-            color: var(--primary-red-light);
-            opacity: 0.2;
-            position: absolute;
-            top: 10px;
-            left: 20px;
-            font-family: serif;
-        }
-
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 25px;
-            color: var(--dark-gray);
-            position: relative;
-            z-index: 1;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: var(--primary-red-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-weight: 600;
-            font-size: 1.2rem;
-        }
-
-        .author-info h4 {
-            margin-bottom: 5px;
-            font-size: 1.1rem;
-        }
-
-        .author-info p {
-            color: var(--medium-gray);
-            font-size: 0.9rem;
-        }
-
-        /* Preguntas frecuentes */
-        .faq {
-            background-color: var(--white);
-        }
-
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            background-color: var(--light-gray);
-            border-radius: var(--border-radius);
-            margin-bottom: 20px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-        }
-
-        .faq-question {
-            padding: 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .faq-question:hover {
-            background-color: #EEEEEE;
-        }
-
-        .faq-question h3 {
-            margin-bottom: 0;
-            font-size: 1.2rem;
-            color: var(--dark-gray);
-        }
-
-        .faq-icon {
-            font-size: 1.2rem;
-            color: var(--primary-red);
-            transition: var(--transition);
-        }
-
-        .faq-answer {
-            padding: 0 25px;
-            max-height: 0;
-            overflow: hidden;
-            transition: var(--transition);
-        }
-
-        .faq-item.active .faq-answer {
-            padding: 0 25px 25px 25px;
-            max-height: 300px;
-        }
-
-        .faq-item.active .faq-icon {
-            transform: rotate(45deg);
-        }
-
-        .faq-whatsapp {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 15px;
-            color: var(--primary-red);
-            font-weight: 500;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .faq-whatsapp:hover {
-            color: var(--primary-red-dark);
-            gap: 12px;
-        }
-
         /* Ubicación */
         .location {
-            background-color: var(--light-gray);
+            background-color: var(--white);
             text-align: center;
         }
 
@@ -619,7 +504,7 @@
             margin-bottom: 30px;
             position: relative;
             height: 400px;
-            background-color: #E0E0E0;
+            background-color: var(--light-gray);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -639,7 +524,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(rgba(198, 40, 40, 0.1), rgba(198, 40, 40, 0.05));
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8));
             display: flex;
             align-items: center;
             justify-content: center;
@@ -652,6 +537,36 @@
         .map-overlay h3 {
             color: var(--primary-red);
             font-size: 1.8rem;
+        }
+
+        /* WhatsApp flotante */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background-color: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            z-index: 999;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #128C7E;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-float img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
         }
 
         /* Footer */
@@ -844,6 +759,18 @@
             .products-grid {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             }
+            
+            .whatsapp-float {
+                width: 60px;
+                height: 60px;
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .whatsapp-float img {
+                width: 35px;
+                height: 35px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -897,15 +824,30 @@
         .fade-in {
             animation: fadeIn 0.8s ease forwards;
         }
+        
+        /* Estilo para cuando no se carga una imagen */
+        .image-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--light-gray);
+            color: var(--medium-gray);
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
+    <!-- WhatsApp flotante -->
+    <a href="https://wa.me/584244525765?text=Hola%20VarietyVida,%20me%20interesan%20sus%20productos" class="whatsapp-float" target="_blank">
+        <img src="logowhatsapp.png" alt="WhatsApp">
+    </a>
+
     <!-- Header y Navegación -->
     <header>
         <div class="container header-container">
             <div class="logo">
                 <!-- Logo de la empresa -->
-                <img src="logovarietyvida.jpeg" alt="VarietyVida Logo">
+                <img src="logovarietyvida.jpeg" alt="VarietyVida Logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><rect width=\"100\" height=\"100\" fill=\"%23C62828\"/><text x=\"50\" y=\"60\" font-family=\"Arial\" font-size=\"30\" fill=\"white\" text-anchor=\"middle\">VV</text></svg>'">
                 <div class="logo-text">VarietyVida</div>
             </div>
             
@@ -917,8 +859,6 @@
                 <a href="#inicio">Inicio</a>
                 <a href="#categorias">Productos</a>
                 <a href="#pagos">Métodos de Pago</a>
-                <a href="#testimonios">Testimonios</a>
-                <a href="#faq">Preguntas Frecuentes</a>
                 <a href="#ubicacion">Ubicación</a>
                 <a href="#contacto">Contacto</a>
             </nav>
@@ -944,7 +884,7 @@
                     <h3 class="currency-title">Tasa de Cambio Oficial</h3>
                     <div class="currency-rate">
                         <div class="rate-item">
-                            <div class="rate-value" id="usd-rate">1 USD</div>
+                            <div class="rate-value">1 USD</div>
                             <div class="rate-label">Dólar Estadounidense</div>
                         </div>
                         <div class="rate-item">
@@ -952,7 +892,8 @@
                             <div class="rate-label">Bolívares Venezolanos</div>
                         </div>
                     </div>
-                    <div class="currency-update" id="rate-update">Actualizando...</div>
+                    <div class="currency-update" id="rate-update">Actualizando tasa de cambio...</div>
+                    <div class="currency-update" id="rate-info">Los precios en bolívares se calculan automáticamente</div>
                 </div>
             </div>
         </div>
@@ -974,7 +915,7 @@
             <div class="products-grid" id="postres-products">
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="jaleademango.jpg" alt="Dulce de Mango">
+                        <img src="jaleademango.jpg" alt="Dulce de Mango" onerror="this.parentElement.classList.add('image-placeholder'); this.parentElement.innerHTML='Dulce de Mango';">
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">Dulce de Mango</h3>
@@ -983,7 +924,7 @@
                             <div class="price-usd">2 $ / unidad</div>
                             <div class="price-bs">
                                 <span>Precio en Bs:</span>
-                                <span id="price-mango">Cargando...</span>
+                                <span id="price-mango" class="price-converted">Cargando...</span>
                             </div>
                         </div>
                         <a href="https://wa.me/584244525765?text=Hola%20VarietyVida,%20quiero%20pedir%20Dulce%20de%20Mango" class="btn" target="_blank">Pedir Ahora</a>
@@ -992,7 +933,7 @@
                 
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="arrozconleche.jpg" alt="Arroz con Leche">
+                        <img src="arrozconleche.jpg" alt="Arroz con Leche" onerror="this.parentElement.classList.add('image-placeholder'); this.parentElement.innerHTML='Arroz con Leche';">
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">Arroz con Leche</h3>
@@ -1001,7 +942,7 @@
                             <div class="price-usd">4 $ / unidad</div>
                             <div class="price-bs">
                                 <span>Precio en Bs:</span>
-                                <span id="price-arroz">Cargando...</span>
+                                <span id="price-arroz" class="price-converted">Cargando...</span>
                             </div>
                         </div>
                         <a href="https://wa.me/584244525765?text=Hola%20VarietyVida,%20quiero%20pedir%20Arroz%20con%20Leche" class="btn" target="_blank">Pedir Ahora</a>
@@ -1010,7 +951,7 @@
                 
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="yogurt.jpg" alt="Yogurt Casero">
+                        <img src="yogurt.jpg" alt="Yogurt Casero" onerror="this.parentElement.classList.add('image-placeholder'); this.parentElement.innerHTML='Yogurt Casero';">
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">Yogurt Casero</h3>
@@ -1019,7 +960,7 @@
                             <div class="price-usd">5 $ / unidad</div>
                             <div class="price-bs">
                                 <span>Precio en Bs:</span>
-                                <span id="price-yogurt">Cargando...</span>
+                                <span id="price-yogurt" class="price-converted">Cargando...</span>
                             </div>
                         </div>
                         <a href="https://wa.me/584244525765?text=Hola%20VarietyVida,%20quiero%20pedir%20Yogurt%20Casero" class="btn" target="_blank">Pedir Ahora</a>
@@ -1031,7 +972,7 @@
             <div class="products-grid" id="carniceria-products" style="display: none;">
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="carnemolida.jpg" alt="Carne Molida">
+                        <img src="carnemolida.jpg" alt="Carne Molida" onerror="this.parentElement.classList.add('image-placeholder'); this.parentElement.innerHTML='Carne Molida';">
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">Carne Molida</h3>
@@ -1040,7 +981,7 @@
                             <div class="price-usd">12.5 $ / kg</div>
                             <div class="price-bs">
                                 <span>Precio en Bs:</span>
-                                <span id="price-molida">Cargando...</span>
+                                <span id="price-molida" class="price-converted">Cargando...</span>
                             </div>
                         </div>
                         <a href="https://wa.me/584244525765?text=Hola%20VarietyVida,%20quiero%20pedir%20Carne%20Molida" class="btn" target="_blank">Pedir Ahora</a>
@@ -1049,7 +990,7 @@
                 
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="carneparamechar.jpg" alt="Carne para Mech">
+                        <img src="carneparamechar.jpg" alt="Carne para Mech" onerror="this.parentElement.classList.add('image-placeholder'); this.parentElement.innerHTML='Carne para Mech';">
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">Carne para Mech</h3>
@@ -1058,7 +999,7 @@
                             <div class="price-usd">12.5 $ / kg</div>
                             <div class="price-bs">
                                 <span>Precio en Bs:</span>
-                                <span id="price-mechar">Cargando...</span>
+                                <span id="price-mechar" class="price-converted">Cargando...</span>
                             </div>
                         </div>
                         <a href="https://wa.me/584244525765?text=Hola%20VarietyVida,%20quiero%20pedir%20Carne%20para%20Mechar" class="btn" target="_blank">Pedir Ahora</a>
@@ -1067,7 +1008,7 @@
                 
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="bisteck.png" alt="Bistec">
+                        <img src="bisteck.png" alt="Bistec" onerror="this.parentElement.classList.add('image-placeholder'); this.parentElement.innerHTML='Bistec';">
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">Bistec</h3>
@@ -1076,7 +1017,7 @@
                             <div class="price-usd">12.5 $ / kg</div>
                             <div class="price-bs">
                                 <span>Precio en Bs:</span>
-                                <span id="price-bistec">Cargando...</span>
+                                <span id="price-bistec" class="price-converted">Cargando...</span>
                             </div>
                         </div>
                         <a href="https://wa.me/584244525765?text=Hola%20VarietyVida,%20quiero%20pedir%20Bistec" class="btn" target="_blank">Pedir Ahora</a>
@@ -1085,7 +1026,7 @@
                 
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="carneparaguisar.jpg" alt="Carne para Guisar">
+                        <img src="carneparaguisar.jpg" alt="Carne para Guisar" onerror="this.parentElement.classList.add('image-placeholder'); this.parentElement.innerHTML='Carne para Guisar';">
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">Carne para Guisar</h3>
@@ -1094,7 +1035,7 @@
                             <div class="price-usd">12.5 $ / kg</div>
                             <div class="price-bs">
                                 <span>Precio en Bs:</span>
-                                <span id="price-guisar">Cargando...</span>
+                                <span id="price-guisar" class="price-converted">Cargando...</span>
                             </div>
                         </div>
                         <a href="https://wa.me/584244525765?text=Hola%20VarietyVida,%20quiero%20pedir%20Carne%20para%20Guisar" class="btn" target="_blank">Pedir Ahora</a>
@@ -1103,7 +1044,7 @@
                 
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="polloentero.png" alt="Pollo Entero">
+                        <img src="polloentero.png" alt="Pollo Entero" onerror="this.parentElement.classList.add('image-placeholder'); this.parentElement.innerHTML='Pollo Entero';">
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">Pollo Entero</h3>
@@ -1112,7 +1053,7 @@
                             <div class="price-usd">5 $ / kg</div>
                             <div class="price-bs">
                                 <span>Precio en Bs:</span>
-                                <span id="price-pollo">Cargando...</span>
+                                <span id="price-pollo" class="price-converted">Cargando...</span>
                             </div>
                         </div>
                         <a href="https://wa.me/584244525765?text=Hola%20VarietyVida,%20quiero%20pedir%20Pollo%20Entero" class="btn" target="_blank">Pedir Ahora</a>
@@ -1124,7 +1065,7 @@
             <div class="products-grid" id="charcuteria-products" style="display: none;">
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="chorizo.jpg" alt="Chorizo">
+                        <img src="chorizo.jpg" alt="Chorizo" onerror="this.parentElement.classList.add('image-placeholder'); this.parentElement.innerHTML='Chorizo';">
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">Chorizo</h3>
@@ -1133,7 +1074,7 @@
                             <div class="price-usd">2 $ / kg</div>
                             <div class="price-bs">
                                 <span>Precio en Bs:</span>
-                                <span id="price-chorizo">Cargando...</span>
+                                <span id="price-chorizo" class="price-converted">Cargando...</span>
                             </div>
                         </div>
                         <a href="https://wa.me/584244525765?text=Hola%20VarietyVida,%20quiero%20pedir%20Chorizo" class="btn" target="_blank">Pedir Ahora</a>
@@ -1142,7 +1083,7 @@
                 
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="salchicha.jpg" alt="Salchicha">
+                        <img src="salchicha.jpg" alt="Salchicha" onerror="this.parentElement.classList.add('image-placeholder'); this.parentElement.innerHTML='Salchicha';">
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">Salchicha</h3>
@@ -1151,7 +1092,7 @@
                             <div class="price-usd">1.8 $ / kg</div>
                             <div class="price-bs">
                                 <span>Precio en Bs:</span>
-                                <span id="price-salchicha">Cargando...</span>
+                                <span id="price-salchicha" class="price-converted">Cargando...</span>
                             </div>
                         </div>
                         <a href="https://wa.me/584244525765?text=Hola%20VarietyVida,%20quiero%20pedir%20Salchicha" class="btn" target="_blank">Pedir Ahora</a>
@@ -1163,7 +1104,7 @@
             <div class="products-grid" id="eventos-products" style="display: none;">
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="carnedehamburguesa.png" alt="Carne de Hamburguesa">
+                        <img src="carnedehamburguesa.png" alt="Carne de Hamburguesa" onerror="this.parentElement.classList.add('image-placeholder'); this.parentElement.innerHTML='Carne Hamburguesa';">
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">Carne de Hamburguesa</h3>
@@ -1172,7 +1113,7 @@
                             <div class="price-usd">2 $ / pack (6 unidades)</div>
                             <div class="price-bs">
                                 <span>Precio en Bs:</span>
-                                <span id="price-hamburguesa">Cargando...</span>
+                                <span id="price-hamburguesa" class="price-converted">Cargando...</span>
                             </div>
                         </div>
                         <a href="https://wa.me/584244525765?text=Hola%20VarietyVida,%20quiero%20pedir%20Carne%20de%20Hamburguesa" class="btn" target="_blank">Pedir Ahora</a>
@@ -1181,7 +1122,7 @@
                 
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="bolasdecarne.jpg" alt="Bolitas de Carne">
+                        <img src="bolasdecarne.jpg" alt="Bolitas de Carne" onerror="this.parentElement.classList.add('image-placeholder'); this.parentElement.innerHTML='Bolitas de Carne';">
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">Bolitas de Carne</h3>
@@ -1190,7 +1131,7 @@
                             <div class="price-usd">5 $ / kg</div>
                             <div class="price-bs">
                                 <span>Precio en Bs:</span>
-                                <span id="price-bolitas">Cargando...</span>
+                                <span id="price-bolitas" class="price-converted">Cargando...</span>
                             </div>
                         </div>
                         <a href="https://wa.me/584244525765?text=Hola%20VarietyVida,%20quiero%20pedir%20Bolitas%20de%20Carne" class="btn" target="_blank">Pedir Ahora</a>
@@ -1212,7 +1153,7 @@
                 <!-- Pago Móvil -->
                 <div class="payment-method">
                     <div class="payment-logo">
-                        <img src="logopagomovil.png" alt="Pago Móvil">
+                        <img src="logopagomovil.png" alt="Pago Móvil" onerror="this.parentElement.innerHTML='<i class=\"fas fa-mobile-alt fa-3x\" style=\"color: #C62828;\"></i>';">
                     </div>
                     <h3 class="payment-title">Pago Móvil</h3>
                     <div class="payment-details">
@@ -1221,15 +1162,16 @@
                         <p><strong>C.I.:</strong> 16.897.477</p>
                     </div>
                     <div class="qr-container">
-                        <!-- QR de Pago Móvil (debes generar uno con tus datos) -->
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=PagoMóvil%3A%20Banco%20Mercantil%2C%20Tel%3A%2004244525765%2C%20CI%3A%2016897477" alt="QR Pago Móvil">
+                        <!-- QR de Pago Móvil generado dinámicamente -->
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=PagoMóvil%3A%20Banco%20Mercantil%2C%20Tel%3A%2004244525765%2C%20CI%3A%2016897477&format=png&margin=10&color=000000&bgcolor=FFFFFF" alt="QR Pago Móvil" id="pago-movil-qr">
                     </div>
+                    <p style="font-size: 0.85rem; color: var(--medium-gray); margin-top: 10px;">Escanea el código para pagar</p>
                 </div>
                 
                 <!-- Binance -->
                 <div class="payment-method">
                     <div class="payment-logo">
-                        <img src="logobinance.png" alt="Binance">
+                        <img src="logobinance.png" alt="Binance" onerror="this.parentElement.innerHTML='<i class=\"fas fa-coins fa-3x\" style=\"color: #C62828;\"></i>';">
                     </div>
                     <h3 class="payment-title">Binance</h3>
                     <div class="payment-details">
@@ -1242,7 +1184,7 @@
                 <!-- Zelle -->
                 <div class="payment-method">
                     <div class="payment-logo">
-                        <img src="Zelle_logo.jpg" alt="Zelle">
+                        <img src="Zelle_logo.jpg" alt="Zelle" onerror="this.parentElement.innerHTML='<i class=\"fas fa-university fa-3x\" style=\"color: #C62828;\"></i>';">
                     </div>
                     <h3 class="payment-title">Zelle</h3>
                     <div class="payment-details">
@@ -1250,109 +1192,6 @@
                         <p>Contáctanos para recibir la información de nuestra cuenta Zelle.</p>
                     </div>
                     <a href="https://wa.me/584244525765?text=Hola%20VarietyVida,%20quiero%20información%20para%20pagar%20por%20Zelle" class="btn" target="_blank">Solicitar Datos</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonios -->
-    <section class="testimonials" id="testimonios">
-        <div class="container">
-            <h2 class="section-title">Lo que Dicen Nuestros Clientes</h2>
-            
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Los productos de VarietyVida son de excelente calidad. El arroz con leche es el mejor que he probado, y la carne siempre está fresca. Mi familia ya es cliente habitual."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">M</div>
-                        <div class="author-info">
-                            <h4>María González</h4>
-                            <p>Cliente desde 2023</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Para mis eventos siempre confío en VarietyVida. Las bolitas de carne son un éxito en todas mis fiestas, y el servicio al cliente es excepcional. Los recomiendo 100%."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">C</div>
-                        <div class="author-info">
-                            <h4>Carlos Rodríguez</h4>
-                            <p>Cliente para eventos</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"La relación calidad-precio es insuperable. El pollo entero siempre fresco y a buen precio, y el yogurt casero es delicioso. Ahora solo compro aquí mis productos."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">A</div>
-                        <div class="author-info">
-                            <h4>Ana Martínez</h4>
-                            <p>Cliente frecuente</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Preguntas Frecuentes -->
-    <section class="faq" id="faq">
-        <div class="container">
-            <h2 class="section-title">Preguntas Frecuentes</h2>
-            
-            <div class="faq-container">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>¿Qué pasa si mi hijo falta?</h3>
-                        <div class="faq-icon">+</div>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Entendemos que pueden surgir imprevistos. Si tu hijo falta, puedes contactarnos para reprogramar o gestionar un reembolso según corresponda. La comunicación constante es clave para nosotros.</p>
-                        <a href="https://wa.me/584244525765?text=Hola%20VarietyVida,%20tengo%20una%20consulta%20sobre%20qué%20pasa%20si%20mi%20hijo%20falta" class="faq-whatsapp" target="_blank">
-                            <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>¿Cómo se manejan las evaluaciones?</h3>
-                        <div class="faq-icon">+</div>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Realizamos evaluaciones periódicas para monitorear el progreso de los estudiantes. Los resultados se comparten con los padres y utilizamos esta información para personalizar el apoyo educativo.</p>
-                        <a href="https://wa.me/584244525765?text=Hola%20VarietyVida,%20quiero%20información%20sobre%20cómo%20se%20manejan%20las%20evaluaciones" class="faq-whatsapp" target="_blank">
-                            <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>¿Cuáles son los horarios de atención?</h3>
-                        <div class="faq-icon">+</div>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Atendemos de lunes a sábado de 8:00 am a 6:00 pm. Puedes hacer tus pedidos en cualquier momento a través de WhatsApp y te responderemos en el horario de atención.</p>
-                        <a href="https://wa.me/584244525765?text=Hola%20VarietyVida,%20quiero%20saber%20los%20horarios%20de%20atención" class="faq-whatsapp" target="_blank">
-                            <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>¿Hacen entregas a domicilio?</h3>
-                        <div class="faq-icon">+</div>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Sí, realizamos entregas a domicilio en la zona. El costo de envío depende de la ubicación. Contáctanos para coordinar la entrega de tu pedido.</p>
-                        <a href="https://wa.me/584244525765?text=Hola%20VarietyVida,%20quiero%20saber%20si%20hacen%20entregas%20a%20domicilio" class="faq-whatsapp" target="_blank">
-                            <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -1367,7 +1206,7 @@
                 <p>Visítanos en nuestro local o utiliza el mapa interactivo para encontrar la mejor ruta hacia nosotros.</p>
                 
                 <div class="location-map">
-                    <img src="mapadevenezuela.png" alt="Mapa de Venezuela">
+                    <img src="mapadevenezuela.png" alt="Mapa de Venezuela" onerror="this.style.display='none';">
                     <div class="map-overlay">
                         <h3>Visita Nuestro Local</h3>
                         <p>Haz clic en el botón para ver nuestra ubicación exacta en Google Maps</p>
@@ -1390,7 +1229,7 @@
             <div class="footer-content">
                 <div class="footer-about">
                     <div class="footer-logo">
-                        <img src="logovarietyvida.jpeg" alt="VarietyVida Logo">
+                        <img src="logovarietyvida.jpeg" alt="VarietyVida Logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><rect width=\"100\" height=\"100\" fill=\"%23C62828\"/><text x=\"50\" y=\"60\" font-family=\"Arial\" font-size=\"30\" fill=\"white\" text-anchor=\"middle\">VV</text></svg>'">
                     </div>
                     <p>VarietyVida ofrece productos alimenticios de la más alta calidad, desde postres tradicionales hasta cortes selectos de carne. Comprometidos con la satisfacción de nuestros clientes.</p>
                     <div class="footer-social">
@@ -1412,8 +1251,6 @@
                         <li><a href="#inicio"><i class="fas fa-chevron-right"></i> Inicio</a></li>
                         <li><a href="#categorias"><i class="fas fa-chevron-right"></i> Productos</a></li>
                         <li><a href="#pagos"><i class="fas fa-chevron-right"></i> Métodos de Pago</a></li>
-                        <li><a href="#testimonios"><i class="fas fa-chevron-right"></i> Testimonios</a></li>
-                        <li><a href="#faq"><i class="fas fa-chevron-right"></i> Preguntas Frecuentes</a></li>
                         <li><a href="#ubicacion"><i class="fas fa-chevron-right"></i> Ubicación</a></li>
                     </ul>
                 </div>
@@ -1422,7 +1259,7 @@
                     <h3>Contacto</h3>
                     <p><i class="fas fa-phone-alt"></i> Teléfono: 0424-4525765</p>
                     <p><i class="fab fa-whatsapp"></i> WhatsApp: 0424-4525765</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Ubicación: <a href="https://maps.app.goo.gl/Yco82LzVs3sJVcDS7" target="_blank">Ver en Google Maps</a></p>
+                    <p><i class="fas fa-map-marker-alt"></i> Ubicación: <a href="https://maps.app.goo.gl/Yco82LzVs3sJVcDS7" target="_blank" style="color: #BDBDBD;">Ver en Google Maps</a></p>
                     <p><i class="far fa-clock"></i> Horario: Lunes a Sábado 8:00 am - 6:00 pm</p>
                 </div>
             </div>
@@ -1434,7 +1271,7 @@
                 <div class="nexus-credit">
                     <span>Diseñado por:</span>
                     <a href="https://jhonmalorne.github.io/nexus.net/" target="_blank">
-                        <img src="logomarketin.jpeg" alt="Nexus Marketing">
+                        <img src="logomarketin.jpeg" alt="Nexus Marketing" onerror="this.style.display='none';">
                     </a>
                 </div>
             </div>
@@ -1486,25 +1323,11 @@
                 // Mostrar la sección correspondiente
                 const category = tab.getAttribute('data-category');
                 productSections[category].style.display = 'grid';
-            });
-        });
-        
-        // Funcionalidad para las preguntas frecuentes
-        const faqItems = document.querySelectorAll('.faq-item');
-        
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
-            
-            question.addEventListener('click', () => {
-                // Cerrar otros items abiertos
-                faqItems.forEach(otherItem => {
-                    if (otherItem !== item && otherItem.classList.contains('active')) {
-                        otherItem.classList.remove('active');
-                    }
-                });
                 
-                // Abrir/cerrar el item clickeado
-                item.classList.toggle('active');
+                // Desplazar suavemente hacia la sección de productos
+                setTimeout(() => {
+                    document.getElementById('categorias').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
             });
         });
         
@@ -1527,6 +1350,9 @@
                     
                     // Actualizar precios en bolívares
                     updatePricesInBs();
+                    
+                    // Actualizar QR de Pago Móvil con el tipo de cambio
+                    updatePagoMovilQR();
                 } else {
                     throw new Error('Datos no disponibles');
                 }
@@ -1534,10 +1360,20 @@
                 console.error('Error obteniendo tasa de cambio:', error);
                 document.getElementById('bs-rate').textContent = 'Error';
                 document.getElementById('rate-update').textContent = 'No se pudo obtener la tasa de cambio';
+                document.getElementById('rate-update').style.color = '#C62828';
                 
                 // Usar tasa por defecto si falla la API
                 exchangeRate = 35.50; // Tasa aproximada por defecto
                 updatePricesInBs();
+            }
+        }
+        
+        function updatePagoMovilQR() {
+            // Actualizar el QR con información más completa
+            const qrData = `PagoMóvil%3A%0ABanco%3A%20Mercantil%0ATel%3A%2004244525765%0ACI%3A%2016897477%0ATasa%20USD%3A%20${exchangeRate.toFixed(2)}%20Bs`;
+            const qrImage = document.getElementById('pago-movil-qr');
+            if (qrImage) {
+                qrImage.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${qrData}&format=png&margin=10&color=000000&bgcolor=FFFFFF`;
             }
         }
         
@@ -1563,7 +1399,13 @@
                 const priceBs = (priceUSD * exchangeRate).toFixed(2);
                 const element = document.getElementById(`price-${product}`);
                 if (element) {
-                    element.textContent = `${priceBs} Bs`;
+                    // Formatear con separadores de miles
+                    const formattedPrice = parseFloat(priceBs).toLocaleString('es-VE', {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2
+                    });
+                    element.textContent = `${formattedPrice} Bs`;
+                    element.parentElement.setAttribute('title', `Equivalente a ${priceUSD} USD`);
                 }
             }
         }
@@ -1617,15 +1459,51 @@
                 el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
                 observer.observe(el);
             });
+            
+            // Manejo de imágenes que no se cargan
+            document.querySelectorAll('img').forEach(img => {
+                img.addEventListener('error', function() {
+                    if (!this.hasAttribute('data-handled')) {
+                        this.setAttribute('data-handled', 'true');
+                        
+                        // Para imágenes específicas, reemplazar con iconos
+                        const src = this.getAttribute('src') || '';
+                        if (src.includes('logovarietyvida')) {
+                            this.outerHTML = '<div style="width: 70px; height: 70px; background-color: #C62828; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.5rem;">VV</div>';
+                        }
+                    }
+                });
+            });
+            
+            // Mostrar notificación de tasa de cambio actualizada
+            let rateUpdateCount = 0;
+            const rateUpdateElement = document.getElementById('rate-update');
+            const originalContent = rateUpdateElement ? rateUpdateElement.textContent : '';
+            
+            setInterval(() => {
+                if (rateUpdateElement && rateUpdateCount > 0) {
+                    rateUpdateElement.textContent = 'Actualizando tasa de cambio...';
+                    rateUpdateElement.style.color = '#C62828';
+                    
+                    setTimeout(() => {
+                        if (rateUpdateElement) {
+                            rateUpdateElement.textContent = originalContent;
+                            rateUpdateElement.style.color = '';
+                        }
+                    }, 2000);
+                }
+                rateUpdateCount++;
+            }, 5 * 60 * 1000); // Cada 5 minutos
         });
         
-        // Manejar el envío del formulario de contacto (simulado)
-        document.addEventListener('submit', function(e) {
-            if (e.target.matches('form')) {
-                e.preventDefault();
-                alert('Gracias por tu mensaje. Te contactaremos pronto por WhatsApp.');
-                e.target.reset();
-            }
+        // Manejo de clics en productos para WhatsApp
+        document.querySelectorAll('.product-card .btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                // No necesitamos prevenir el comportamiento por defecto ya que es un enlace
+                // Pero podemos agregar seguimiento si es necesario
+                const productName = this.closest('.product-card').querySelector('.product-name').textContent;
+                console.log(`Producto solicitado: ${productName}`);
+            });
         });
     </script>
 </body>
